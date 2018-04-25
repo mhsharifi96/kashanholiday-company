@@ -12,13 +12,14 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 - python3.6
 - sqlite 
--django 1.11
+- django 1.11
 
 ### Installing
 
 create vitualenv
 
-```virtualenv -p python3 .env
+```
+virtualenv -p python3 .env
 source .env/bin/activate
 pip install -r requirement.txt```
 

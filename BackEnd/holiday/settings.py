@@ -37,8 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app',
+    # Third Party Apps
     'taggit',
+
+    # my_Apps
+    'restaurants',
+    'blog',
+    'tours',
+    'attractions',
+    'hotel',
 ]
 
 MIDDLEWARE = [
@@ -52,11 +59,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'holiday.urls'
+LOGIN_URL = '/login/'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,7 +123,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_in_env", "media_root")
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 

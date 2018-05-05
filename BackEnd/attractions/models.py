@@ -10,6 +10,7 @@ class Address(models.Model):
     address = models.TextField(null=False, blank=True, default='Amirkabir Ave')
     postalCode = models.CharField(max_length=10, null=False, blank=True, default='1234567890')
     # google_Map_API =
+
     class Meta:
         pass
 

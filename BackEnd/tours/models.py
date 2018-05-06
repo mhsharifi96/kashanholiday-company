@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import UserAddresses, BasicUser
+from accounts.models import UserAddresses
 # Create your models here.
 
 
@@ -37,7 +37,7 @@ class Tour(models.Model):
 
 
 class Cart(models.Model):
-    user = models.ForeignKey(BasicUser, on_delete=models.PROTECT)
+    #user = models.ForeignKey(BasicUser, on_delete=models.PROTECT)
     tour = models.ManyToManyField(Tour)
     total = models.DecimalField(max_digits=23, default=100, verbose_name=u'مجموع', decimal_places=2)
 

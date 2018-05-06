@@ -13,6 +13,7 @@
 	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 	<link href="./css/main.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
 
@@ -127,6 +128,51 @@
 	<hr class="my-4">
 </div>
 
+<div class="tour">
+	<div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+		<h2 class="w3-wide w3-center" style="color: white">تورهای لحظه آخری</h2>
+		<br>
+
+		<ul  class="w3-ul w3-border w3-white w3-text-grey" style="direction: rtl">
+			<li class="w3-padding" style="text-align: right">فروردین <span class="w3-tag w3-red w3-margin-left">فروخته شده</span></li>
+			<li class="w3-padding" style="text-align: right">اردیبهشت <span class="w3-tag w3-red w3-margin-left">فروخته شده</span></li>
+			<li class="w3-padding" style="text-align: right">خرداد <span class="w3-badge w3-right w3-margin-right" style="text-align: left"></span></li>
+		</ul>
+
+		<div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+			<div class="w3-third w3-margin-bottom" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+				<img src="img/karvan.jpg"  style="width:100%" class="w3-hover-opacity">
+				<div class="w3-container w3-white">
+					<p><b>کاشان -قمصر</b></p>
+					<p class="w3-opacity">جمعه 1397/2/12</p>
+					<p>بازدید از مراسم گلاب گیری و...</p>
+					<button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+				</div>
+			</div>
+			<div class="w3-third w3-margin-bottom" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+				<img src="img/karvan.jpg"  style="width:100%" class="w3-hover-opacity">
+				<div class="w3-container w3-white">
+					<p><b>ابیاته-کاشان-مرنجاب</b></p>
+					<p class="w3-opacity">شنبه 13</p>
+					<p>بازدید و....</p>
+					<button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+				</div>
+			</div>
+			<div class="w3-third w3-margin-bottom" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+				<img src="img/1.jpg"  alt="San Francisco"  style="width:100% " class="w3-hover-opacity">
+				<div class="w3-container w3-white">
+					<p><b>قمصر-کاشان</b></p>
+					<p class="w3-opacity">شنبه 27</p>
+					<p>بازدیدو...</p>
+					<button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
 <!--- Two Column Section -->
 <div class="container-fluid padding">
 	<div class="row padding">
@@ -221,6 +267,33 @@
 	</div>
 </div>
 
+
+
+<div class="w3-container w3-content w3-padding-64 w3-yellow" style="max-width:800px" id="contact" >
+	<h2 class="w3-wide w3-center">CONTACT</h2>
+	<p class="w3-opacity w3-center"><i>Fan? Drop a note!</i></p>
+	<div class="w3-row w3-padding-32">
+		<div class="w3-col m6 w3-large w3-margin-bottom">
+			<i class="fa fa-map-marker" style="width:30px"></i> kashan<br>
+			<i class="fa fa-phone" style="width:30px"></i> Phone: 0315533.....<br>
+			<i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
+		</div>
+		<div class="w3-col m6">
+			<form action="/action_page.php" target="_blank">
+				<div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+					<div class="w3-half">
+						<input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+					</div>
+					<div class="w3-half">
+						<input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+					</div>
+				</div>
+				<input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+				<button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+			</form>
+		</div>
+	</div>
+</div>
 <!--- Two Column Section -->
 <div class="container-fluid padding">
 	<div class="row padding">
@@ -240,25 +313,11 @@
 </div>
 <hr class="my-4">
 <!--- Connect -->
-<div class="container-fluid padding">
-	<div class="row text-center padding">
-		<div class="col-12">
-			<h2>Connect</h2>
-		</div>
-		<div class="col-12 social padiing">
-			<a href="#"><i class="fab fa-facebook"></i></a>
-			<a href="#"><i class="fab fa-twitter"></i></a>
-			<a href="#"><i class="fab fa-google-plus-g"></i></a>
-			<a href="#"><i class="fab fa-instagram"></i></a>
-			<a href="#"><i class="fab fa-youtube"></i></a>	
-		</div>
-	</div>
-</div>
-	
+
 <!--- Footer -->
-<div class="container-fluid padding">
+<div class="container-fluid padding" style="background-color: #1b1e21">
 	<div class="row text-center padding">
-		<div class="col-md-4">
+		<div class="col-md-4" style="color: white">
 			<img src="img/w3newbie.png" alt="">
 			<hr class="light">
 			<p>555-599-5956</p>
@@ -266,7 +325,7 @@
 			<p>kfha street jbhsj</p>
 			<p>city,uhacus</p>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4" style="color: white">
 			<hr class="light">
 			<h5>Our Hours</h5>
 			<hr class="light">
@@ -275,7 +334,7 @@
 			<p>kfha street jbhsj</p>
 
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4" style="color: white">
 			<hr class="light">
 			<h5>askcavsa</h5>
 			<hr class="light">
@@ -284,12 +343,54 @@
 			<p>kfha street jbhsj</p>
 			<p>city,uhacus</p>
 		</div>
-		<div class="col-md-12">
+		<div class="col-md-12" style="color: white">
 			<hr class="light-100">
 			<h5>&copy; KashanHoliday.com</h5>
 		</div>
 	</div>
+	<div class="container-fluid padding">
+		<div class="row text-center padding">
+			<div class="col-12">
+				<h2 style="color: white">ارتباط با ما</h2>
+			</div>
+			<div class="col-12 social padiing">
+				<a href="#"><i class="fab fa-facebook"></i></a>
+				<a href="#"><i class="fab fa-twitter"></i></a>
+				<a href="#"><i class="fab fa-google-plus-g"></i></a>
+				<a href="#"><i class="fab fa-instagram"></i></a>
+				<a href="#"><i class="fab fa-youtube"></i></a>
+			</div>
+		</div>
+	</div>
 </div>
+
+<script>
+    function bigImg(x) {
+        x.style.height = "250x";
+        x.style.width = "250px";
+    }
+
+    function normalImg(x) {
+        x.style.height = "260px";
+        x.style.width = "260px";
+    }
+    function myFunction() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    var modal = document.getElementById('ticketModal');
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
 </body>
 </html>

@@ -32,7 +32,9 @@ html,body{
   border-bottom: 2px solid #FFDD00;
 }
 .navbar-toggler {
-  border-color: rgb(255,102,203);
+  padding: 0;
+  height: 100;
+  background: url(../img/menu.svg) no-repeat ; 
 } 
 .carousel-inner img{
   width: 100%;
@@ -107,13 +109,6 @@ html,body{
 .fa-bus, .fa-bed, .fa-utensils{
   width: 100%;
   font-size: 4em;
-}
-.fun{
-  width: 100%;
-  margin-bottom: 2rem;
-}
-.gif{
-  max-width: 100%;
 }
 .social a{
   font-size: 4.5em;

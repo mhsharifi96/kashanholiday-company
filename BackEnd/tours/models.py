@@ -40,11 +40,3 @@ class Tour(models.Model):
         return reverse('last_tour:tour_detail', args=[self.slug,self.id])
 
 
-class Cart(models.Model):
-    #user = models.ForeignKey(BasicUser, on_delete=models.PROTECT)
-    tour = models.ManyToManyField(Tour)
-    total = models.DecimalField(max_digits=23, default=100, verbose_name=u'مجموع', decimal_places=2)
-
-    class Meta:
-        verbose_name = u'سبد خرید'
-        verbose_name_plural = u'سبدهای خرید'

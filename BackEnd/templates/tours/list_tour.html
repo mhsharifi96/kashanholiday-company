@@ -6,7 +6,7 @@
                 {% comment %} <a href="{{ last.get_absolute_url }}"> {% endcomment %}
                     {% comment %} <img src="{% if product.image %}{{ l.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"> {% endcomment %}
                 {% comment %} </a> {% endcomment %}
-                {% comment %} <a href="{{ last.get_absolute_url }}">{{ last.name }}</a><br> {% endcomment %}
+                <a href="{{ last.get_absolute_url }}">{{ last.name }}</a><br>
                 ${{ last.price }}
                 {{ last.description }}
                 

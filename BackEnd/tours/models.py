@@ -37,7 +37,7 @@ class Tour(models.Model):
         return self.name
         
     def get_absolute_url(self):
-        return reverse('last_tour:tour_detail', args=[ self.id, self.slug])
+        return reverse('last_tour:tour_detail', args=[self.slug,self.id])
 
 
 class Cart(models.Model):

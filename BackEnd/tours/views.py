@@ -11,8 +11,8 @@ def Last_Tours(request):
     # query example =>blog.published.filter(title__startswith='Who')
     Today = datetime.date.today()
     Day_ago = Today -datetime.timedelta(days=2)
-    query = Tour.published.filter(start_tour__range(Today,Day_ago))
+    last_tour = Tour.published.all()
 
-    return render(request,'tour/list_tour.html',{'last_tour':query})
+    return render(request,'tours/list_tour.html',{'last_tour':last_tour})
 
     

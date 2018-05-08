@@ -35,8 +35,8 @@ class Tour(models.Model):
 
     
         
-    # def get_absolute_url(self):
+    def get_absolute_url(self):
         
-    #     return reverse('tours:tour_detail', args=[self.id,self.slug])
+         return reverse('tours:Detals_Tours', args=[self.id,self.slug])
 
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 
 # Create your views here.
 # class
@@ -16,3 +16,8 @@ def Last_Tours(request):
     return render(request,'tours/list_tour.html',{'last_tour':last_tour})
 
     
+def Detals_Tours(request,id,slug):
+    tour = get_object_or_404(Tour,id=id,slug=slug,available=True)
+    return render (request,'tours/tourdetail.html',{'tour':tour})
+
+

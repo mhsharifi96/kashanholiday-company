@@ -33,10 +33,10 @@ class Tour(models.Model):
         verbose_name = 'tour'
         verbose_name_plural = 'Tours'
 
-    
+    def __str__(self):
+        return self.name
         
-    # def get_absolute_url(self):
-        
-    #     return reverse('tours:tour_detail', args=[self.id,self.slug])
+    def get_absolute_url(self):
+        return reverse('last_tour:tour_detail', args=[ self.id, self.slug])
 
 

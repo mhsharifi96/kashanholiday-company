@@ -8,6 +8,7 @@ class CartItemInline(admin.TabularInline):
 
 
 class CartAdmin(admin.ModelAdmin):
+
     inlines = [
         CartItemInline
     ]
@@ -16,4 +17,4 @@ class CartAdmin(admin.ModelAdmin):
         model = Cart
 
 
-admin.site.register(Cart, CartItem)
+admin.site.register(Cart, CartAdmin)

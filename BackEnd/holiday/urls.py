@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^restaurants/$', RestaurantListView.as_view()),
     url(r'^restaurants/create/$', RestaurantCreateView.as_view()),
     # url(r'^restaurants/(?P<slug>\w+)/$', RestaurantListView.as_view()),
-    url(r'^restaurants/(?P<pk>\w+)/$', RestaurantDetailView.as_view()),
+    url(r'^restaurants/(?P<pk>\w+)/$', RestaurantDetailView.as_view(), name='restaurant-detail'),
     url(r'^contact/$', TemplateView.as_view(template_name='contact.html')),
     url(r'^account/', include('accounts.urls', namespace='account')),
     url(r'^tours/', include('tours.urls', namespace='tours')),

@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div class="tour">
+        <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+            <h2 class="w3-wide w3-center" style="color: white">تورهای لحظه آخری</h2>
+            <br>
+    
+            <ul  class="w3-ul w3-border w3-white w3-text-grey" style="direction: rtl">
+                <li class="w3-padding" style="text-align: right">فروردین <span class="w3-tag w3-red w3-margin-left">فروخته شده</span></li>
+                <li class="w3-padding" style="text-align: right">اردیبهشت <span class="w3-tag w3-red w3-margin-left">فروخته شده</span></li>
+                <li class="w3-padding" style="text-align: right">خرداد <span class="w3-badge w3-right w3-margin-right" style="text-align: left"></span></li>
+            </ul>
+    
+            <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+                <div class="w3-third w3-margin-bottom" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+                    <img src="img/karvan.jpg"  style="width:100%" class="w3-hover-opacity">
+                    <div class="w3-container w3-white">
+                        <p><b>کاشان -قمصر</b></p>
+                        <p class="w3-opacity">جمعه 1397/2/12</p>
+                        <p>بازدید از مراسم گلاب گیری و...</p>
+                        <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+                    </div>
+                </div>
+                <div class="w3-third w3-margin-bottom" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+                    <img src="img/karvan.jpg"  style="width:100%" class="w3-hover-opacity">
+                    <div class="w3-container w3-white">
+                        <p><b>ابیاته-کاشان-مرنجاب</b></p>
+                        <p class="w3-opacity">شنبه 13</p>
+                        <p>بازدید و....</p>
+                        <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+                    </div>
+                </div>
+                <div class="w3-third w3-margin-bottom" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+                    <img src="img/1.jpg"  alt="San Francisco"  style="width:100% " class="w3-hover-opacity">
+                    <div class="w3-container w3-white">
+                        <p><b>قمصر-کاشان</b></p>
+                        <p class="w3-opacity">شنبه 27</p>
+                        <p>بازدیدو...</p>
+                        <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    .tour {
+        background: url("../img/nightsky.jpg") no-repeat;
+      }
+
+ 
+<script>
+        function bigImg(x) {
+            x.style.height = "250x";
+            x.style.width = "250px";
+        }
+    
+        function normalImg(x) {
+            x.style.height = "260px";
+            x.style.width = "260px";
+        }
+        function myFunction() {
+            var x = document.getElementById("navDemo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    
+        // When the user clicks anywhere outside of the modal, close it
+        var modal = document.getElementById('ticketModal');
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>     

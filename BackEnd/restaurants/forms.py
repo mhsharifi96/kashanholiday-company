@@ -1,5 +1,5 @@
 from django import forms
-from .models import RestaurantLocation
+from .models import RestaurantLocation, Item
 from .validators import validate_category
 
 
@@ -25,6 +25,7 @@ class RestaurantLocationCreateForm(forms.ModelForm):
             'name',
             'location',
             'category',
+            'slug',
         ]
 
 # examples!!!
@@ -39,3 +40,19 @@ class RestaurantLocationCreateForm(forms.ModelForm):
     #     if "edu" in email:
     #         raise forms.ValidationError("We do not Accept Edu Emails!!!")
     #     return email
+class ItemForm(forms.ModelForm):
+    class Meta:
+        model = Item
+        fields = [
+            'restaurant',
+            'name',
+            'contents',
+            'excludes',
+            'public',
+        ]
+
+    def __init__(self, user=None, *args, **kwargs):
+        # print(kwargs.pop('user'))
+        print(user)
+        super(ItemForm, self).__init__(*args, **kwargs)
+        self.fields['restaurant'].queryset = RestaurantLocation.objects.filter(owner=user, item_isnull=True) # .exclude(item_isnull=False)

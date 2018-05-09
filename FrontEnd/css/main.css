@@ -75,6 +75,18 @@ body {
   width: 100%;
   height: 100%;
 }
+.parallex{
+  background-image: url(./../img/kashan.jpg);
+  height: auto;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  color: white;
+  display: flex;
+  align-items: center;
+}
 
 .btn-primary {
   background-color: #6648b1;
@@ -92,19 +104,19 @@ body {
 }
 
 .padding {
-  padding-bottom: 2rem;
+  padding-bottom: 1.5rem;
 }
 
 .welcome {
   width: 75%;
   margin: 0 auto;
-  padding-top: 2rem;
+  padding-top: 1.5rem;
 }
 
 .welcome hr {
   border-top: 2px solid #b4b4b4;
   width: 95%;
-  margin-top: .3rrem;
+  margin-top: .3rem;
   margin-bottom: 1rem;
 }
 
@@ -128,8 +140,8 @@ body {
 }
 
 .social a {
-  font-size: 4.5em;
-  padding: 3rem;
+  font-size: 2em;
+  padding: 1rem;
 }
 
 .fa-facebook {
@@ -188,8 +200,8 @@ hr.light-100 {
 
 @media (max-width: 992px) {
   .social a {
-    font-size: 4em;
-    padding: 2rem;
+    font-size: 1.7em;
+    padding: .7rem;
   }
 }
 
@@ -213,8 +225,8 @@ hr.light-100 {
     font-size: 200%;
   }
   .social a {
-    font-size: 2.5em;
-    padding: 1.2rem;
+    font-size: 1.5em;
+    padding: .5rem;
   }
   .carousel-inner img {
     height: 450px;
@@ -353,7 +365,7 @@ figure {
 /*--- Bootstrap Padding Fix --*/
 
 [class*="col-"] {
-  padding: 1rem;
+  padding: .2rem;
 }
 
 /*
@@ -399,6 +411,7 @@ section h3.section-subheading {
 #portfolio .portfolio-item {
   right: 0;
   margin: 0 0 15px;
+  padding: 0 17px;
 }
 
 #portfolio .portfolio-item:hover {
@@ -441,4 +454,10 @@ section h3.section-subheading {
   #portfolio .portfolio-item {
     margin: 0 0 30px
   }
+}
+#contact{
+  width: 100%;
+}
+.card{
+  margin: 0 20px
 }

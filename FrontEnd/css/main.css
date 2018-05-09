@@ -178,24 +178,35 @@ body {
   margin-top: .3rem;
   margin-bottom: 1rem;
 }
-
+.lead{
+  font-size: 80%;
+}
 .fa-bus {
   color: #e54d26;
+}
+.fa-bus:hover {
+  color: #f8ad30;
 }
 
 .fa-bed {
   color: #563d7c;
 }
+.fa-bed:hover {
+  color: #963d7c;
+}
 
 .fa-utensils {
   color: #2163af;
+}
+.fa-utensils:hover {
+  color: #7568cf;
 }
 
 .fa-bus,
 .fa-bed,
 .fa-utensils {
   width: 100%;
-  font-size: 4em;
+  font-size: 2em;
 }
 
 .social a {
@@ -431,8 +442,12 @@ section h3.section-subheading {
   font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif
 }
 
+#portfolio .port-container{
+  width: 70%;
+}
 #portfolio .portfolio-item {
   right: 0;
+  width: 100px;
   margin: 9px 0px;
   padding: 8px 8px;
 }

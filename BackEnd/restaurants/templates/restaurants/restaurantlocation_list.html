@@ -4,13 +4,14 @@
 
 {% block content %}
 
-<h1>Restaurant List</h1>
+<h1>My Restaurant <small><a href='{% url "restaurants:create" %}'> Add New</a></small></h1>
 
 <ul>
     {% for obj in object_list %}
-    <li><a href="/restaurants/{{ obj.slug }}/">{{ obj }}</a><br>
-        <a href='{% "restaurant-datail" slug=obj.slug %}'>{{ obj }}</a>
+    <li><a href="{{ obj.get_absolute_url }}">{{ obj }}</a><br>
             {{ obj.name }} {{ obj.location }} {{ obj.category }}</li>
+    {% empty %}
+    <li><a href='{% url "restaurants:create" %}'> Add One</a></li>
     {% endfor %}
 </ul>
 

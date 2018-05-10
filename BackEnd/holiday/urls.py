@@ -16,12 +16,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
-from attractions.views import HomeView, ContactView, AboutView
+from attractions.views import  ContactView, AboutView,Index_Page
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
-    url(r'^$', HomeView.as_view(), name='home'),
+    url(r'^$', Index_Page, name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='about.html')),
     url(r'^restaurants/', include('restaurants.urls', namespace='restaurants')),
     # url(r'^restaurants/create/$', RestaurantCreateView.as_view(), name='restaurants-create'),
@@ -32,3 +34,6 @@ urlpatterns = [
     url(r'^tours/', include('tours.urls', namespace='tours')),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

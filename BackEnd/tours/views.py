@@ -18,6 +18,6 @@ def Last_Tours(request):
     
 def Detals_Tours(request,id,slug):
     tour = get_object_or_404(Tour,id=id,slug=slug,available=True)
-    return render (request,'tours/tourdetail.html',{'tour':tour})
+    return render (request,'tours/tour_detail.html',{'tour':tour})
 
 

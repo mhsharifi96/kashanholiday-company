@@ -16,19 +16,22 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
-from attractions.views import HomeView, ContactView, AboutView
+from attractions.views import ContactView, AboutView, Index_Page
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-
     url(r'^admin/', admin.site.urls),
-    url(r'^$', HomeView.as_view(), name='home'),
-    url(r'^about/$', TemplateView.as_view(template_name='about.html')),
+    url(r'^$', Index_Page, name='home'),
+    url(r'^about/$', TemplateView.as_view(template_name='about.html'), name='about'),
     url(r'^restaurants/', include('restaurants.urls', namespace='restaurants')),
     # url(r'^restaurants/create/$', RestaurantCreateView.as_view(), name='restaurants-create'),
-    # url(r'^restaurants/(?P<slug>\w+)/$', RestaurantListView.as_view()),
+    # url(r'^restaurants/$', RestaurantListView.as_view(), name='restaurants-list'),
     # url(r'^restaurants/(?P<pk>\w+)/$', RestaurantDetailView.as_view(), name='restaurant-detail'),
-    url(r'^contact/$', TemplateView.as_view(template_name='contact.html')),
-    url(r'^account/', include('accounts.urls', namespace='account')),
+    url(r'^contact/$', TemplateView.as_view(template_name='contact.html'), name='contact'),
+    url(r'^accounts/', include('accounts.urls', namespace='account')),
     url(r'^tours/', include('tours.urls', namespace='tours')),
-
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

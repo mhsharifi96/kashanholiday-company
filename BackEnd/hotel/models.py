@@ -1,13 +1,24 @@
 from django.db import models
-from attractions.models import Address
+
 # Create your models here.
 
+class AvailableTourManger(models.Manager):
+    def get_queryset(self):
+        queryset = super(AvailableTourManger, self).get_queryset().filter(available=True)
+        queryset = queryset  # TODO
+        return queryset
 
 class Hotel(models.Model):
     name = models.CharField(max_length=120, verbose_name=u'نام هتل', null=False, blank=True, default=u'امیرکبیر')
-    introduction = models.TextField(null=False, blank=True, default='Welcome')
-    address = models.ForeignKey(Address, on_delete=models.PROTECT)
     slug = models.SlugField(null=False, blank=True, unique=True)
+    image = models.ImageField(upload_to='Hotels/%Y/%m/%d', blank=True)
+    description = models.TextField(null=False, blank=True, default='Welcome')
+   
+    available = models.BooleanField(default=True)
+
+    objects = models.Manager()
+    published = AvailableTourManger()
+
 
     def get_absolute_url(self):
         pass

@@ -59,7 +59,7 @@ class RestaurantDetailView(LoginRequiredMixin, DetailView):
 
 class RestaurantCreateView(LoginRequiredMixin, CreateView):
     form_class = RestaurantLocationCreateForm
-    template_name = 'restaurants/form.html'
+    template_name = 'form.html'
     login_url = '/login/'
 
     def form_valid(self, form):
@@ -67,20 +67,20 @@ class RestaurantCreateView(LoginRequiredMixin, CreateView):
         instance.owner = self.request.user
         return super(RestaurantCreateView, self).form_valid(form)
 
-    def get_context_data(self, *args, **kwargs):
-        context = super(RestaurantCreateView, self).get_context_data(*args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super(RestaurantCreateView, self).get_context_data(**kwargs)
         context['title'] = 'Add Restaurant'
         return context
 
 
 class RestaurantUpdateView(LoginRequiredMixin, UpdateView):
     form_class = RestaurantLocationCreateForm
-    template_name = 'form.html'
+    template_name = 'restaurants/detail-update.html'
     login_url = '/login/'
     # template_name = 'restaurants/detail-update.html'
 
-    def get_context_data(self, *args, **kwargs):
-        context = super(RestaurantUpdateView, self).get_context_data(*args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super(RestaurantUpdateView, self).get_context_data(**kwargs)
         name = self.get_object().name
         context['title'] = f'Update Restaurant: {name}'
         return context

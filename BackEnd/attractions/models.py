@@ -17,8 +17,16 @@ from django.db import models
 
 
 class Gallery(models.Model):
+    STATUSـCHOICES = (
+        ('hotel','Hotel'),
+        ('tour','Tour'),
+        ('resturant','Resturant'),
+        ('location','Location'),
+        ('other','Other'),
+    )
     name = models.CharField(max_length=250, blank=True, null=True)
     slug = models.SlugField()
+    category= models.CharField(max_length=20,choices=STATUSـCHOICES,blank=True, null=True)
     image = models.ImageField(upload_to='gallery')
 
 

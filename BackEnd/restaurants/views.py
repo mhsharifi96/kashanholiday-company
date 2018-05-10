@@ -1,8 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from .forms import RestaurantLocationCreateForm, ItemForm
+from .forms import RestaurantLocationCreateForm
 from django.db.models import Q
-from .models import RestaurantLocation, Item
+from .models import RestaurantLocation
 # Create your views here.
 # def restaurant_create_view(request):
 #     form = RestaurantLocationCreateForm(request.POST or None)
@@ -31,52 +31,53 @@ from .models import RestaurantLocation, Item
 
 
 class RestaurantListView(LoginRequiredMixin, ListView):
-    def get_queryset(self):
-        slug = self.kwargs.get("slug")
-        if slug:
-            queryset = RestaurantLocation.objects.filter(
-                Q(category__iexact=slug) |
-                Q(category__icontains=slug)
-            )
-        else:
-            queryset = RestaurantLocation.objects.all()
-        return queryset
     # def get_queryset(self):
-    #     return RestaurantLocation.objects.filter(owner=self.request.user)
+    #     slug = self.kwargs.get("slug")
+    #     if slug:
+    #         queryset = RestaurantLocation.objects.filter(
+    #             Q(category__iexact=slug) |
+    #             Q(category__icontains=slug)
+    #         )
+    #     else:
+    #         queryset = RestaurantLocation.objects.all()
+    #     return queryset
+    def get_queryset(self):
+        return RestaurantLocation.objects.filter(owner=self.request.user)
 
 
 class RestaurantDetailView(LoginRequiredMixin, DetailView):
-    # def get_queryset(self):
-    #     return RestaurantLocation.objects.filter(owner=self.request.user)
-    queryset = RestaurantLocation.objects.all()
+    def get_queryset(self):
+        return RestaurantLocation.objects.filter(owner=self.request.user)
+    # queryset = RestaurantLocation.objects.all()
 
-    def get_queryset(self, *args, **kwargs):
-        print(self.kwargs)
-        context = super(RestaurantDetailView, self).get_context_data(*args, **kwargs)
-        print(context)
-        return context
+    # def get_queryset(self, *args, **kwargs):
+    #     print(self.kwargs)
+    #     context = super(RestaurantDetailView, self).get_context_data(*args, **kwargs)
+    #     print(context)
+    #     return context
 
 
 class RestaurantCreateView(LoginRequiredMixin, CreateView):
     form_class = RestaurantLocationCreateForm
-    login_url = '/login/'
     template_name = 'restaurants/form.html'
+    login_url = '/login/'
 
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.owner = self.request.user
         return super(RestaurantCreateView, self).form_valid(form)
 
-    # def get_context_data(self, *args, **kwargs):
-    #     context = super(RestaurantCreateView, self).get_context_data(*args, **kwargs)
-    #     context['title'] = 'Add Restaurant'
-    #     return context
+    def get_context_data(self, *args, **kwargs):
+        context = super(RestaurantCreateView, self).get_context_data(*args, **kwargs)
+        context['title'] = 'Add Restaurant'
+        return context
 
 
 class RestaurantUpdateView(LoginRequiredMixin, UpdateView):
     form_class = RestaurantLocationCreateForm
+    template_name = 'form.html'
     login_url = '/login/'
-    template_name = 'restaurants/detail-update.html'
+    # template_name = 'restaurants/detail-update.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(RestaurantUpdateView, self).get_context_data(*args, **kwargs)

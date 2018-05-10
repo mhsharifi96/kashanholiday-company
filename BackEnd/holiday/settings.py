@@ -61,6 +61,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'holiday.urls'
+LOGIN_URL = 'accounts/login/'
 
 TEMPLATES = [
     {

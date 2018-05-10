@@ -25,5 +25,4 @@ urlpatterns = [
     # url(r'^r(^P<pk>\d+)/item-edit/$', ItemUpdateView.as_view(), name='item-update'),
     # url(r'^items/$', ItemListView.as_view(), name='item-list'),
     url(r'$', RestaurantListView.as_view(), name='list'),
-
 ]

@@ -31,6 +31,8 @@ from .models import RestaurantLocation
 
 
 class RestaurantListView(LoginRequiredMixin, ListView):
+    def get_queryset(self):
+        return RestaurantLocation.objects.filter(owner=self.request.user)
     # def get_queryset(self):
     #     slug = self.kwargs.get("slug")
     #     if slug:
@@ -41,13 +43,11 @@ class RestaurantListView(LoginRequiredMixin, ListView):
     #     else:
     #         queryset = RestaurantLocation.objects.all()
     #     return queryset
-    def get_queryset(self):
-        return RestaurantLocation.objects.filter(owner=self.request.user)
 
 
-class RestaurantDetailView(LoginRequiredMixin, DetailView):
-    def get_queryset(self):
-        return RestaurantLocation.objects.filter(owner=self.request.user)
+# class RestaurantDetailView(LoginRequiredMixin, DetailView):
+#     def get_queryset(self):
+#         return RestaurantLocation.objects.filter(owner=self.request.user)
     # queryset = RestaurantLocation.objects.all()
 
     # def get_queryset(self, *args, **kwargs):
@@ -75,8 +75,8 @@ class RestaurantCreateView(LoginRequiredMixin, CreateView):
 
 class RestaurantUpdateView(LoginRequiredMixin, UpdateView):
     form_class = RestaurantLocationCreateForm
-    template_name = 'restaurants/detail-update.html'
     login_url = '/login/'
+    template_name = 'restaurants/detail-update.html'
     # template_name = 'restaurants/detail-update.html'
 
     def get_context_data(self, **kwargs):

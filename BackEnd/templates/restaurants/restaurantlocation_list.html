@@ -9,7 +9,7 @@
 
 <ul>
 {% for obj in object_list %}
-    <li><a href='{{ obj.get_absolute_url }}s'>{{ obj }}</a><br/>
+    <li><a href='{{ obj.get_absolute_url }}'>{{ obj }}</a><br/>
     {{ obj.name }} {{ obj.location }} {{ obj.category }} {{ obj.timestamp }} {{ obj.updated }}</li>
 {% empty %}
     <li><a href='{% url "restaurants:create" %}'>Add One</a></li>

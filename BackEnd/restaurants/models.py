@@ -46,7 +46,7 @@ class RestaurantLocation(models.Model):
     def __str__(self):
         return self.name
 
-    # objects = RestaurantLocationManager()
+    objects = RestaurantLocationManager()
 
     def get_absolute_url(self):
         # return f"/restaurants/{self.slug}"

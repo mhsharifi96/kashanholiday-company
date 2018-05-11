@@ -6,9 +6,10 @@ from django.core.urlresolvers import reverse
 
 class Post(models.Model):
     title = models.CharField(max_length=33, verbose_name=u'عنوان')
+    image = models.ImageField(blank=True, null=True, verbose_name=u'تصویر تور')
     content = models.TextField(null=False, blank=True, default='', verbose_name=u'متن')
-    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
-    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name=u'آخرین به روزرسانی')
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name=u'بارگذاری شده')
 
     def __str__(self):
         return self.title
@@ -18,6 +19,8 @@ class Post(models.Model):
         # return "/posts/%s/" %(self.id)
 
     class Meta:
+        verbose_name = u'پست'
+        verbose_name_plural = u'پست ها'
         ordering = ["-timestamp", "-updated"]
 
 

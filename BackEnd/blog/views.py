@@ -59,8 +59,8 @@ def post_detail(request, id=None):
 def post_list(request):
     queryset_list = Post.objects.all()  # .order_by("-timestamp")
     paginator = Paginator(queryset_list, 10)
-
-    page = request.GET.get("page")
+    page_request_variable = "page"
+    page = request.GET.get(page_request_variable)
     try:
         queryset = paginator.page(page)
     except PageNotAnInteger:
@@ -69,7 +69,8 @@ def post_list(request):
         queryset = paginator.page(paginator.num_pages)
     context = {
         "object_list": queryset,
-        "title": "list"
+        "title": "list",
+        "page_request_var": page_request_variable,
     }
     # if request.user.is_authenticated():
     #     context = {

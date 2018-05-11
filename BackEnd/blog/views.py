@@ -3,8 +3,6 @@ from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Post
 from .forms import PostForm
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render
 # Create your views here.
 
 
@@ -25,10 +23,6 @@ def post_create(request):
         "form": form,
     }
     return render(request, "post_form.html", context)
-
-
-def listing(request):
-    contact_list = 0
 
 
 def post_update(request, id=None):
@@ -57,16 +51,7 @@ def post_detail(request, id=None):
 
 
 def post_list(request):
-    queryset_list = Post.objects.all()  # .order_by("-timestamp")
-    paginator = Paginator(queryset_list, 10)
-
-    page = request.GET.get("page")
-    try:
-        queryset = paginator.page(page)
-    except PageNotAnInteger:
-        queryset = paginator.page(1)
-    except EmptyPage:
-        queryset = paginator.page(paginator.num_pages)
+    queryset = Post.objects.all()
     context = {
         "object_list": queryset,
         "title": "list"

@@ -18,7 +18,7 @@ class Post(models.Model):
         # return "/posts/%s/" %(self.id)
 
     class Meta:
-        ordering = ["-timestamp", "-updated"]
+        pass
 
 
 class Category(models.Model):

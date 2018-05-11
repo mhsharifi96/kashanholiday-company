@@ -25,8 +25,13 @@
     <div class="pagination">
     <span class="step-links">
         {% if object_list.has_previous %}
+<<<<<<< HEAD
             <a href="?page=1">&laquo; first</a>
             <a href="?page={{ object_list.previous_page_number }}">previous</a>
+=======
+            <a href="?{{ page_request_var }}=1">&laquo; first</a>
+            <a href="?{{ page_request_var }}={{ object_list.previous_page_number }}">previous</a>
+>>>>>>> 8f744b1d7dec51a8483f7c933e2273eb315e547d
         {% endif %}
 
         <span class="current">
@@ -34,8 +39,13 @@
         </span>
 
         {% if object_list.has_next %}
+<<<<<<< HEAD
             <a href="?page={{ object_list.next_page_number }}">next</a>
             <a href="?page={{ object_list.paginator.num_pages }}">last &raquo;</a>
+=======
+            <a href="?{{ page_request_var }}={{ object_list.next_page_number }}">next</a>
+            <a href="?{{ page_request_var }}={{ object_list.paginator.num_pages }}">last &raquo;</a>
+>>>>>>> 8f744b1d7dec51a8483f7c933e2273eb315e547d
         {% endif %}
     </span>
 </div>

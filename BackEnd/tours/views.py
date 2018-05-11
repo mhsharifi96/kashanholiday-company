@@ -16,8 +16,8 @@ def Last_Tours(request):
     return render(request,'tours/list_tour.html',{'last_tour':last_tour})
 
     
-def Detals_Tours(request,id,slug):
+def Detals_Tours(request, id, slug):
     tour = get_object_or_404(Tour,id=id,slug=slug,available=True)
-    return render (request,'tours/tour_detail.html',{'tour':tour})
+    return render (request, 'tours/tour_detail.html',{'tour':tour})
 
 

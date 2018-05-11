@@ -1,6 +1,6 @@
 from django.db import models
 from decimal import Decimal
-from tours.models import Tour
+from tours.models import Tour, TourVariation
 from accounts.models import BasicUser
 from django.db.models.signals import pre_save, post_save, post_delete
 # Create your models here.
@@ -8,7 +8,7 @@ from django.db.models.signals import pre_save, post_save, post_delete
 
 class CartItem(models.Model):
     cart = models.ForeignKey("Cart")
-    item = models.ForeignKey(Tour)
+    item = models.ForeignKey(TourVariation, on_delete=models.PROTECT)
     quantity = models.PositiveIntegerField(default=1)
     line_item_total = models.DecimalField(max_digits=10, decimal_places=2)
 
@@ -36,11 +36,10 @@ post_delete.connect(cart_item_post_save_receiver, sender=CartItem)
 
 
 class Cart(models.Model):
-    user = models.ForeignKey(BasicUser, on_delete=models.PROTECT)
-    items = models.ManyToManyField(Tour, through=CartItem)
+    user = models.ForeignKey(BasicUser, on_delete=models.PROTECT, null=True, blank=True)
+    items = models.ManyToManyField(TourVariation, through=CartItem)
     timestamp = models.DateTimeField(auto_now_add=True, )
-    subtotal = models.DecimalField(max_digits=50, default=100.00, verbose_name=u'مجموع', decimal_places=2)\
-
+    subtotal = models.DecimalField(max_digits=50, default=100.00, verbose_name=u'مجموع', decimal_places=2)
 
     class Meta:
         verbose_name = u'سبد خرید'

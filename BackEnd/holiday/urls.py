@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls', namespace='account')),
     url(r'^tours/', include('tours.urls', namespace='tours')),
     url(r'^cart/$', CartView.as_view(), name='cart'),
+    url(r'^blog/posts/', include("blog.urls", namespace="blog")),
 ]
 
 if settings.DEBUG:

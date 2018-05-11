@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
+from cart.views import CartView
 from attractions.views import ContactView, AboutView, Index_Page
 from django.conf import settings
 from django.conf.urls.static import static
@@ -31,6 +32,7 @@ urlpatterns = [
     url(r'^contact/$', TemplateView.as_view(template_name='contact.html'), name='contact'),
     url(r'^accounts/', include('accounts.urls', namespace='account')),
     url(r'^tours/', include('tours.urls', namespace='tours')),
+    url(r'^cart/$', CartView.as_view(), name='cart'),
 ]
 
 if settings.DEBUG:

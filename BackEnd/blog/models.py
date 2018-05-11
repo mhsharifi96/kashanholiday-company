@@ -4,6 +4,19 @@ from taggit.managers import TaggableManager
 # Create your models here.
 
 
+class Post(models.Model):
+    title = models.CharField(max_length=33, verbose_name=u'عنوان')
+    content = models.TextField(null=False, blank=True, default='', verbose_name=u'متن')
+    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        pass
+
+
 class Category(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True)

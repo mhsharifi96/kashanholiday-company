@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Holiday Detail | {{ title }}</title>
-</head>
-<body>
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+{% extends "base-blog.html" %}
+
+{% block blog_head_title %}{{ instance.title }} | {{ block.super }}{% endblock blog_head_title %}
+
+{% block content %}
+<h1>{{ title }}</h1>
 {{ instance.title }}<br>
 {{ instance.content }}<br>
 {{ instance.timestamp }}<br>
@@ -19,5 +11,4 @@
 {{ instance.updated }}<br>
 {{ instance.id }}<br>
 
-</body>
-</html>
+%{ endblock content %}

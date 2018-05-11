@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Form Blog</title>
-</head>
-<body>
+{% extends "base-blog.html" %}
+
+{% block content %}
+{{ block.super }}
 <h1>Holiday Form</h1>
+
 
 <form method="POST" action="">{% csrf_token %}
 {{ form.as_p }}
     <input type="submit" value="Create Post">
 </form>
-</body>
-</html>
+
+{% endblock content %}

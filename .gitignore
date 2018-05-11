@@ -63,4 +63,7 @@ migrations
 .env
 db.sqlite3
 .vscode
-
+/media/
+media/
+media
+rnserver

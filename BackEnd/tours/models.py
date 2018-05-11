@@ -49,7 +49,7 @@ class Tour(models.Model):
         return self.name
         
     def get_absolute_url(self):
-        return reverse('tours:Details_Tours', kwargs={"pk": self.pk})
+        return reverse('tours:Details_Tours', kwargs={"pk": self.pk,'slug':self.slug})
 
 
 class TourVariation(models.Model):

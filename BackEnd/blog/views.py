@@ -17,6 +17,7 @@ def post_create(request):
         messages.success(request, "Successfully Created", extra_tags='html_safe')
         return HttpResponseRedirect(instance.get_absolute_url())
     else:
+        
         messages.error(request, "Not Created!")
     # if request.method == "POST":
     #     # print(request.POST)

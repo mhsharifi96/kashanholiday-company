@@ -3,12 +3,11 @@
 {% block blog_head_title %}{{ instance.title }} | {{ block.super }}{% endblock blog_head_title %}
 
 {% block content %}
-<h1>{{ title }}</h1>
-{{ instance.title }}<br>
-{{ instance.content }}<br>
-{{ instance.timestamp }}<br>
-{{ instance.update }}<br>
-{{ instance.updated }}<br>
-{{ instance.id }}<br>
 
-%{ endblock content %}
+<div class="col-sm-6 col-sm-offset-3">
+<h1>{{ title }} <small>{{ instance.timestamp }}</small></h1>
+{{ instance.title }}<br>
+{{ instance.content | linebreaks }}<br>
+
+</div>
+{% endblock content %}

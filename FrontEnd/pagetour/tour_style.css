@@ -84,6 +84,7 @@
 }
 #page-content .margin-top70 {
     margin-top: 0px !important;
+    margin-right: 40px;
 }
 .wpb_row {
 
@@ -120,10 +121,32 @@
     color: #292f32 !important;
     background-color: #ffdd00;
 }
-.circle {
-    width: 100px;
-    height: 100px;
-    background-color: #0088FF;
-    border-radius: 50%;
+
+.rounded{
     text-align: center;
+    width:350px;
+    height: 100px;
+    margin-top: 50px;
+
+}
+.text{
+    font-size:small;
+    font-weight: bold;
+}
+.rounded-circle{
+    width: 180px;
+    height:180px;
+}
+
+
+element {
+
+    text-align: center;
+
+}
+.text-center {
+
+    text-align: center !important;
+    margin-left: 90px;
+
 }

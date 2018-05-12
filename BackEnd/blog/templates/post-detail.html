@@ -5,7 +5,13 @@
 {% block content %}
 
 <div class="col-sm-6 col-sm-offset-3">
+  {% if instance.image %}
+  <img src="{{ instance.image.url }}" class="img-responsive" width="600px" height="300px">
+  {% endif %}
 <h1>{{ title }} <small>{{ instance.timestamp }}</small></h1>
+{% if instance.author.get_full_name %}
+<p>Author: {{ instance.author.get_full_name }}</p><br>
+{% endif %}
 {{ instance.title }}<br>
 {{ instance.content | linebreaks }}<br>
 

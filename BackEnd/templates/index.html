@@ -31,7 +31,7 @@
 		<duv class="collapse navbar-collapse" id="navbar-Responsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item ">
-					<a href="#" class="nav-link">Services</a>
+					<a href="{% url 'blog:list' %}" class="nav-link">Blog</a>
 				</li>
 				<li class="nav-item">
 					<a href="{% url 'restaurants:list' %}" class="nav-link">Restuarant</a>
@@ -47,7 +47,7 @@
 				</li>
 			</ul>
 		</duv>
-</div>	
+</div>
 </nav>
 
 <!--- Image Slider -->
@@ -89,7 +89,7 @@
 			</div>
 			<div class="col-md-8">
 				<div class="row">
-				<div class="col-md-12">	
+				<div class="col-md-12">
 					<h1 class="display-4">Tourism In Kashan</h1>
 					<p class="lead">
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, minus laborum. Maiores, quisquam praesentium doloribus fugiat accusamus vel, quos illo ab consequatur corporis tempora soluta neque impedit voluptatem architecto ducimus.
@@ -112,7 +112,7 @@
 					</div>
 				</div>
 			</div>
-		</div>	
+		</div>
 	</div>
 </div>
 
@@ -133,12 +133,12 @@
 	</div>
 
 	{%endfor%}
-	
+
 	</div>
 	</div>
 </div>
 </section>
-		
+
 <hr class="my-4">
 
 <!--- Two Column Section -->
@@ -146,14 +146,14 @@
 	<div class="row padding">
 		<div class="col-lg-6">
 			<h2>about us</h2>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, iusto dolorum! Dolore debitis exercitationem atque quasi cum natus optio iusto aperiam non, quibusdam earum incidunt 
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, iusto dolorum! Dolore debitis exercitationem atque quasi cum natus optio iusto aperiam non, quibusdam earum incidunt
 				explicabo dolor? Similique, quas deleniti.</p>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, iusto dolorum! Dolore debitis exercitationem atque quasi cum natus optio iusto aperiam non, quibusdam earum incidunt 
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, iusto dolorum! Dolore debitis exercitationem atque quasi cum natus optio iusto aperiam non, quibusdam earum incidunt
 				explicabo dolor? Similique, quas deleniti.</p>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, iusto dolorum! Dolore debitis exercitationem atque quasi cum natus optio iusto aperiam non, quibusdam earum incidunt 
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, iusto dolorum! Dolore debitis exercitationem atque quasi cum natus optio iusto aperiam non, quibusdam earum incidunt
 				explicabo dolor? Similique, quas deleniti.</p>
 			<br>
-			<a href="#" class="btn btn-primary">Learn More.</a>	
+			<a href="#" class="btn btn-primary">Learn More.</a>
 		</div>
 		<div class="col-lg-6">
 			<img src="{% static "img/Camel-riding-Maranjab-Desert.jpg" %}" class="img-fluid">
@@ -168,13 +168,13 @@
 		<div class="col-md-12">
 			<h1 class="display-4">HOTELS</h1>
 		</div>
-		<hr>		
+		<hr>
 	</div>
 </div>
 
 <!--- Cards -->
 <div class="container padding">
-	<div class="row padding">	
+	<div class="row padding">
 		{% for hotel in hotels %}
 		<div class="col-xs-12 col-sm-6 col-md-4">
 				<div class="card">
@@ -183,10 +183,10 @@
 						<h4 class="card-title">{{hotel.name}}</h4>
 						<p class="card-text">{{hotel.description|truncatewords:8|linebreaks}}</p>
 						<a href="#" class="btn btn-outline-secondary">See {{hotel.name}}</a>
-					</div>	
+					</div>
 				</div>
-		{% endfor %}	
-		</div>	
+		{% endfor %}
+		</div>
 	</div>
 </div>
 
@@ -202,20 +202,20 @@
 					 Dignissimos consectetur culpa ut velit doloribus ipsam delectus laudantium recusandae consequuntur aspernatur voluptates ipsum eius corporis,
 					 asperiores temporibus soluta ea hic alias.
 				</h2>
-				
+
 				<a href="#" class="btn main-btn btn-primary my-4 text-capitalize">
-					learn more 
+					learn more
 				</a>
 			</div>
 			<div class="col-md-4 about-pictures my-4 d-none d-lg-block">
-			
+
 			{% for  img in attractions_photo %}
 				<img src="{%if img.image%}{{img.image.url}}{%else%}{% static "img/1.jpg" %}{%endif%}" alt="{{img.name}}" class="img-{{forloop.counter}} img-thumbnail about-image" >
-				
+
 			{% endfor %}
-				
-			
-				
+
+
+
 			</div>
 
 		</div>
@@ -271,7 +271,7 @@
 								</button>
 							</form>
 						</div>
-					</div>	
+					</div>
 				</div>
 			</div>
 		</div>
@@ -331,16 +331,3 @@
 <a href="#top-icon" class="p-1" id="back-to-top"><i class="fas fa-arrow-up primary-color-fa-3x"></i></a>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-

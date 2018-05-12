@@ -10,9 +10,19 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="thumbnail">
+      {% if obj.image %}
+      <img src="{{ obj.image.url }}" class="img-responsive" width="600px" height="300px">
       <!--<img src="..." alt="...">-->
+      {% endif %}
       <div class="caption">
-        <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <small> {{ obj.timestamp|timesince }} ago</small></h3>
+        {% if obj.draft %}<h3>Staff only: Draft</h3>{% endif %}
+        {% if obj.publish > today %}<h3>Staff only: Future Post </h3>{% endif %}
+
+        <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <small>
+          {{ obj.timestamp|timesince }} ago</small></h3>
+          {% if obj.author.get_full_name %}
+          <p>Author: {{ obj.author.get_full_name }}</p>
+          {% endif %}
         <p>{{ obj.content | linebreaks | truncatechars:120 }}</p>
         <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
       </div>
@@ -25,13 +35,12 @@
     <div class="pagination">
     <span class="step-links">
         {% if object_list.has_previous %}
-<<<<<<< HEAD
+
             <a href="?page=1">&laquo; first</a>
             <a href="?page={{ object_list.previous_page_number }}">previous</a>
-=======
+
             <a href="?{{ page_request_var }}=1">&laquo; first</a>
             <a href="?{{ page_request_var }}={{ object_list.previous_page_number }}">previous</a>
->>>>>>> 8f744b1d7dec51a8483f7c933e2273eb315e547d
         {% endif %}
 
         <span class="current">
@@ -39,13 +48,11 @@
         </span>
 
         {% if object_list.has_next %}
-<<<<<<< HEAD
+
             <a href="?page={{ object_list.next_page_number }}">next</a>
             <a href="?page={{ object_list.paginator.num_pages }}">last &raquo;</a>
-=======
             <a href="?{{ page_request_var }}={{ object_list.next_page_number }}">next</a>
             <a href="?{{ page_request_var }}={{ object_list.paginator.num_pages }}">last &raquo;</a>
->>>>>>> 8f744b1d7dec51a8483f7c933e2273eb315e547d
         {% endif %}
     </span>
 </div>

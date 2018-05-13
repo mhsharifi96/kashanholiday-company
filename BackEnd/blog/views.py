@@ -6,7 +6,35 @@ from .forms import PostForm
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
+from django.views.generic import DetailView
+try:
+    from urllib import quote_plus #python 2
+except:
+    pass
+
+try:
+    from urllib.parse import quote_plus #python 3
+except:
+    pass
 # Create your views here.
+
+
+class PostDetailView(DetailView):
+	template_name = 'post-detail.html'
+
+	def get_object(self, *args, **kwargs):
+		slug = self.kwargs.get("slug")
+		instance = get_object_or_404(Post, slug=slug)
+		if instance.publish > timezone.now().date() or instance.draft:
+			if not request.user.is_staff or not request.user.is_superuser:
+				raise Http404
+		return instance
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(PostDetailView, self).get_context_data(*args, **kwargs)
+		instance = context['object']
+		context['share_string'] = quote_plus(instance.content)
+		return context
 
 
 def post_create(request):
@@ -33,9 +61,6 @@ def post_create(request):
     }
     return render(request, "post_form.html", context)
 
-
-def listing(request):
-    contact_list = 0
 
 
 def post_update(request, slug=None):

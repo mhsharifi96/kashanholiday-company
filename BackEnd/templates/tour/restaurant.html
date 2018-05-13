@@ -10,9 +10,7 @@
         </a>
         <div class="portfolio-caption">
             <h4>{{tour.name}}</h4>
-             <a href="{{ tour.get_absolute_url }}">{{ tour.name }}</a>
             <p>{{tour.description|truncatewords:8|linebreaks}}</p>
-            
         </div>
     </div>
 {%endfor%}

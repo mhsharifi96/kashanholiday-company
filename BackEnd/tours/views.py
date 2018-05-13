@@ -17,8 +17,9 @@ def List_Tours(request):
     return render(request,'tour/tour.html',{'List_tour':List_tour,'Random_photo':Random_photo})
 
     
-def Detals_Tours(request, id, slug):
+def Details_Tours(request,id, slug):
     tour = get_object_or_404(Tour,id=id,slug=slug,available=True)
-    return render (request, 'tours/tour_detail.html',{'tour':tour})
+    #
+    return render (request, 'tour/detail_tour.html',{'tour':tour})
 
 

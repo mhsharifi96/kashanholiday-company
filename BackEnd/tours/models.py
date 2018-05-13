@@ -35,6 +35,7 @@ class Tour(models.Model):
     end_tour = models.DateTimeField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    note = models.TextField(blank=True, verbose_name=u'نکات تور')
 
     objects = models.Manager()
     published = AvailableTourManger()
@@ -49,7 +50,7 @@ class Tour(models.Model):
         return self.name
         
     def get_absolute_url(self):
-        return reverse('tours:Details_Tours', kwargs={"pk": self.pk,'slug':self.slug})
+        return reverse('tours:Details_Tours', args=[self.id,self.slug])
 
 
 class TourVariation(models.Model):

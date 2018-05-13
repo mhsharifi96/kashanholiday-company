@@ -13,4 +13,14 @@ class UserAddresses(models.Model):
 
 class BasicUser(models.Model):
    user = models.OneToOneField(User, on_delete=models.CASCADE)
-   user_address = models.ForeignKey(UserAddresses, on_delete=models.CASCADE)
+   user_address = models.ManyToManyField(UserAddresses)
+
+
+class HotelManagerUser(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_address = models.ManyToManyField(UserAddresses)
+
+
+class RestaurantOwner(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_address = models.ManyToManyField(UserAddresses)

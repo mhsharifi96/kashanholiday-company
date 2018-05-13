@@ -40,7 +40,7 @@
 					<a href="#" class="nav-link">Hotel</a>
 				</li>
 				<li class="nav-item">
-					<a href="#" class="nav-link">Tour</a>
+					<a href="{% url "tours:List_Tour"%}" class="nav-link">Tour</a>
 				</li>
 				<li class="nav-item act">
 					<a href="#" class="nav-link">Home</a>
@@ -122,12 +122,12 @@
 	<div class="row">
 	{% for tour in tours%}
 	<div class="col-md-4 col-sm-6 portfolio-item">
-		<a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+		<a class="portfolio-link" data-toggle="modal" href="{{ tour.get_absolute_url }}">
 		<img class="img-fluid" src="{% if tour.image %}{{tour.image.url}}{%else%}{% static "img/1.jpg" %}{%endif%}" alt="{{tour.name}}">
 		</a>
 		<p></p>
 		<div class="portfolio-caption">
-		<h4>{{tour.name}}</h4>
+		<a href="{{ tour.get_absolute_url }}"><h4>{{tour.name}}</h4></a>
 		<p>{{tour.description |truncatewords:5|linebreaks}}</p>
 		</div>
 	</div>

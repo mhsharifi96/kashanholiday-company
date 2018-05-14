@@ -120,7 +120,7 @@
 <section class="parallex" id="portfolio">
 <div class="container port-container">
 	<div class="row">
-	{% for tour in tours%}
+	{% for tour in tours %}
 	<div class="col-md-4 col-sm-6 portfolio-item">
 		<a class="portfolio-link" href="{{ tour.get_absolute_url }}">
 		<img class="img-fluid" src="{% if tour.image %}{{tour.image.url}}{%else%}{% static "img/1.jpg" %}{%endif%}" alt="{{tour.name}}">

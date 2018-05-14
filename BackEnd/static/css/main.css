@@ -13,7 +13,7 @@ body {
   position: absolute;
   width: 100%;
   z-index: 10;
-  background-color: rgba(255,255,255,.2);
+  background-color: rgba(20,20,20,.5);
   /* border-bottom: 1px dotted #fff; */
   border-radius: 0 0 50px 50px; 
   font-size: 1.1em !important;
@@ -28,7 +28,7 @@ body {
   left: 50px;
   right: 50px;
   z-index: 10;
-  background-color: rgba(210,212,220,.5);
+  background-color: rgba(210,212,220,.2);
   border-radius: 10px; 
 }
 
@@ -92,11 +92,6 @@ body {
   float: none;
   margin: 0 auto;
 }
-
-.img-fixed {
-  width: 100%;
-  height: 100%;
-}
 /* ############################################################################## */
 .parallex{
   background-image: url(./../img/The-Maranjab-Desert%u2019s-Caravanserai.jpg);
@@ -117,12 +112,12 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
   color: white;
   display: flex;
   align-items: center;
 }
 .banner{
+  background-size: cover;
   margin-top: 10px;
   animation: fromleft;
   animation-duration: 4s;
@@ -164,18 +159,12 @@ body {
   }
 }
 /* ############################################################# */
-.btn-primary {
-  color: #ffcc80;
-  background-color: #e68a00;
-  border: 1px solid #ffcc80;
+.main-search{
+  width: 100%;
 }
-
-.btn-primary:hover {
-  color: #e68a00;
-  background-color: #ffcc80;
-  border: 1px solid #e68a00;
+.main-search input{
+  border-radius: 0 2px 2px 0; 
 }
-
 .jumbotron {
   padding: 1rem;
   border-radius: 0;
@@ -376,6 +365,19 @@ hr.light-100 {
     padding: 1px;
     margin: 5px;
     font-size: .9em !important;
+  }
+  .main-search{
+    width: 50%;
+    margin:  0 auto;
+    height: 10px;
+  }
+  .main-search span{
+    width: 20px;
+    margin: 0 auto;
+  }
+  .main-search span svg{
+    width: 10px;
+    height: 10px;
   }
 }
 
@@ -610,11 +612,22 @@ section h3.section-subheading {
 }
 /* ############################### */
 .basket{
-  margin: 10px 0 0 30px;
+  position: absolute;
+  top: 20px;
+  left: 60px;
   font-size: 10px;
-  float: left;  
+  float: left;
 }
-.login{
-  margin: 15px 50px 0 0;
-  font-size: 15px;
+
+.top-header{
+  font-size: 12px;
+  position: absolute;
+  top: 20px;
+  right: 60px;
+}
+.top-header a{
+  margin: 0;
+}
+.login, .signin{
+  margin-left: 20px;
 }

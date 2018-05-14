@@ -5,7 +5,7 @@
 {%block content%}
 {% for tour in List_tour %}
     <div class="col-md-6 col-sm-6 col-12 portfolio-item">
-        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+        <a class="portfolio-link" href="#portfolioModal1">
         <img class="img-fluid" src="{% if tour.image%}{{tour.image.url}}{%else%}{% static "img/Camel-riding-Maranjab-Desert.jpg" %}{%endif%}" alt="{{tour.name}}">
         </a>
         <div class="portfolio-caption">

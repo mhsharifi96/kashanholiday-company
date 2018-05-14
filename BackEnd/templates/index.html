@@ -10,43 +10,54 @@
 	{% comment %} <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}"> {% endcomment %}
 	<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
-	<script src="{% static "js/jquery3.3.1.js" %}"></script>
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+	<!-- <script src="{% static "js/jquery3.3.1.js" %}"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="{% static "js/bootstrap.min.js" %}"></script>
 	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
-	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
 	<script src="{% static "js/main.js" %}"></script>
 	<link href="{% static "css/main.css" %}" rel="stylesheet">
 </head>
 <body>
-
 <!-- Navigation -->
+<div class="header d-none d-lg-block">
+	<div class="container-fluid">
+		<div class="basket">
+			<button>
+				shopping-card
+			</button>
+		</div>
+		<div class="login">
+			login
+		</div>
+	</div>
+</div>
 <nav class="navbar navbar-expand-md  bg-outline-light navbar-wrapper">
 <div class="container-fluid">
-	<a href="#" class="navbar-brand"><img id="top-icon" src="{% static "img/logo.png"%}" style="width: 30px; height: 30px;" alt="logo"></a>
+		<a href="#" class="navbar-brand"><img id="top-icon" src="{% static "img/logo.png"%}" style="width: 30px; height: 30px;" alt="logo"></a>
 		<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbar-Responsive">
 			<span class="navbar-toggler-icon my-toggler "></span>
 		</button>
 		<duv class="collapse navbar-collapse" id="navbar-Responsive">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item ">
-					<a href="{% url 'blog:list' %}" class="nav-link">Blog</a>
+				<li class="nav-item act">
+					<a href="#" class="nav-link">Home</a>
 				</li>
 				<li class="nav-item">
-					<a href="{% url 'restaurants:list' %}" class="nav-link">Restuarant</a>
+					<a href="{% url "tours:List_Tour"%}" class="nav-link">Tour</a>
 				</li>
 				<li class="nav-item">
 					<a href="#" class="nav-link">Hotel</a>
 				</li>
 				<li class="nav-item">
-					<a href="{% url "tours:List_Tour"%}" class="nav-link">Tour</a>
-				</li>
-				<li class="nav-item act">
-					<a href="#" class="nav-link">Home</a>
+					<a href="{% url 'restaurants:list' %}" class="nav-link">Restuarant</a>
+				</li>	
+				<li class="nav-item ">
+					<a href="{% url 'blog:list' %}" class="nav-link">Blog</a>
 				</li>
 			</ul>
-		</duv>
+		</div>
 </div>
 </nav>
 
@@ -144,7 +155,10 @@
 <!--- Two Column Section -->
 <div class="container padding">
 	<div class="row padding">
-		<div class="col-lg-6">
+			<div class="col-lg-6">
+					<img src="{% static "img/Camel-riding-Maranjab-Desert.jpg" %}" class="img-fluid">
+				</div>
+		<div class="col-lg-6 about-us">
 			<h2>about us</h2>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, iusto dolorum! Dolore debitis exercitationem atque quasi cum natus optio iusto aperiam non, quibusdam earum incidunt
 				explicabo dolor? Similique, quas deleniti.</p>
@@ -154,9 +168,6 @@
 				explicabo dolor? Similique, quas deleniti.</p>
 			<br>
 			<a href="#" class="btn btn-primary">Learn More.</a>
-		</div>
-		<div class="col-lg-6">
-			<img src="{% static "img/Camel-riding-Maranjab-Desert.jpg" %}" class="img-fluid">
 		</div>
 	</div>
 </div>

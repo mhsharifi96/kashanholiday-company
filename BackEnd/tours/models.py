@@ -3,6 +3,7 @@ from accounts.models import UserAddresses
 from django.urls import reverse
 from django.db.models.signals import post_save, pre_save
 from django.utils.text import slugify
+# from restaurants.models import RestaurantLocation
 # Create your models here.
 
 
@@ -36,6 +37,7 @@ class Tour(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     note = models.TextField(blank=True, verbose_name=u'نکات تور')
+    # restaurant = models.ManyToManyField(RestaurantLocation)
 
     objects = models.Manager()
     published = AvailableTourManger()
@@ -48,7 +50,7 @@ class Tour(models.Model):
 
     def __str__(self):
         return self.name
-        
+
     def get_absolute_url(self):
         return reverse('tours:Details_Tours', args=[self.id,self.slug])
 

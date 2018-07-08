@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404
-
+from django.views.generic.detail import DetailView
+from django.shortcuts import render
 # Create your views here.
 # class
 
@@ -7,6 +8,18 @@ from .models import Tour
 from attractions.models import Gallery
 import datetime
 
+
+class TourDetailView(DetailView):
+    model = Tour
+
+
+def product_detail_view_func(request, id):
+    tour_instance = Tour.objects.get(id=id)
+    template = "pagetour/tour_detail.html"
+    context = {
+        "object": tour_instance
+    }
+    return render(request, template, context)
 
 def List_Tours(request):
     # query example =>blog.published.filter(title__startswith='Who')

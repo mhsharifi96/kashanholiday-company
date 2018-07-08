@@ -5,7 +5,7 @@ body {
   width: 100%;
   font-family: 'Poppins', sans-serif;
   color: #222;
-  background-color: #fffff3;
+  background-color: #fbfbfb;
   text-align: right;
 }
 .header{
@@ -251,9 +251,10 @@ body {
 }
 
 footer {
-  background-color:  #fffff3;
+  background-color:  #F3F3F3;
   color: #222;
   padding-top: 2rem;
+  margin-top: 1em;
 }
 
 hr.light {

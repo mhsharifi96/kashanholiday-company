@@ -71,43 +71,33 @@
 
     <div class="row">
         <div id="page-content" class="col-md-8 col-xs-12">
-            <div class="title-style-2 "></div>
-            <div class="schedule-block">
-            </div>
             <div class="entry-content margin-top70">
                 <div class="vc_row wpb_row vc_row-fluid">
                     <h1 style="text-align: right">{{tour.name}}</h1>
                     <div class="row text-center" style="text-align: center">
-                        <div class="col-md-4" style="text-align: center">
-                                <div class="rounded-circle" style="background-color:orange" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
-                                    <div style="padding-top: 50px">
-                                        <div>
-                                            <i class="fa fa-bed" aria-hidden="true" style="color: black;font-size:48px "></i>
-                                        </div>
-                                        <h4 href="#" class="title">درجه هتل</h4>
-                                        <div class="text">3و4و5 ستاره</div>
-                                    </div>
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <!-- {%  for  data in slider|slice:":3" %} -->
+                                <div class="carousel-item active">
+                                    <!-- <img class="img-fluid" src="{{data.post_img.url}}"> -->
+                                    <img src="../../static/img/karvansara.jpg">       
+                                    far
                                 </div>
-                        </div>
-                        <div class="col-md-4" style="text-align: center">
-                            <div class="rounded-circle" style="background-color:orange" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
-                                <div style="padding-top: 50px">
-                                    <div>
-                                        <i class="fa fa-calendar" style="font-size:48px;color: black"></i>
-                                    </div>
-                                    <h4 href="#" class="title">{{tour.start_tour|date:"Y M d"}}</h4>
-                                    <div class="text">{{tour.start_tour|date:"D"}}</div>
-                                </div>
+                                <!-- {% endfor%} -->
                             </div>
-                        </div>
-                        <div class="col-md-4" style="text-align: center">
-                            <div class="rounded-circle" style="background-color:orange" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
-                                <div style="padding-top: 50px">
-                                    <div><i class="fa fa-clock" style="font-size:48px;color: black"></i></div>
-                                    <h4 href="#" class="title">زمان حرکت</h4>
-                                    <div class="text">{{tour.start_tour|date:"H"}}:{{tour.start_tour|date:"i"}}</div>
-                                </div>
-                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
                     </div>
                     <br><br><br>

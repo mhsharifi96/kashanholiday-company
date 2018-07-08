@@ -50,7 +50,15 @@ class HotelRoom(models.Model):
     host = models.ForeignKey(User, on_delete=models.PROTECT)
     roomType = models.ForeignKey(RoomType, on_delete=models.PROTECT)
     roomNumber = models.PositiveIntegerField(verbose_name=u'شماره اتاق', null=False, blank=False, default=100)
+    price = models.DecimalField(decimal_places=2, max_digits=20, default=99.99)
+    sale_price = models.DecimalField(decimal_places=2, max_digits=20, null=True, blank=True)
     inventory = models.IntegerField(verbose_name=u"موجودی", null=True, blank=True)
+
+    def __str__(self):
+        return self.roomNumber
+    
+    def get_price(self):
+        pass
 
     def get_absolute_url(self):
         pass

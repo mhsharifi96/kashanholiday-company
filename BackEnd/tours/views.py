@@ -13,6 +13,7 @@ from django.utils import timezone
 
 class TourListView(ListView):
     model = Tour
+    queryset = Tour.objects.all()
 
     def get_context_data(self, *args, **kwargs):
         context = super(TourListView, self).get_context_data(*args, **kwargs)

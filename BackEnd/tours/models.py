@@ -36,10 +36,11 @@ class Tour(models.Model):
     end_tour = models.DateTimeField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True, blank=True, verbose_name=u'فعال')
     note = models.TextField(blank=True, verbose_name=u'نکات تور')
     # restaurant = models.ManyToManyField(RestaurantLocation)
 
-    objects = models.Manager()
+    objects = AvailableTourManger()
     published = AvailableTourManger()
 
     class Meta:
@@ -52,11 +53,12 @@ class Tour(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('tours:Details_Tours', args=[self.id,self.slug])
+        # return reverse('Tour_Detail', kwargs={"pk":self.pk, "slug":self.slug})
+        return reverse('tours:Tour_Detail', args=[self.id,self.slug])
 
 
 class TourVariation(models.Model):
-    product = models.ForeignKey(Tour, on_delete=models.PROTECT)
+    tour = models.ForeignKey(Tour, on_delete=models.PROTECT)
     title = models.CharField(max_length=120, verbose_name=u'نام')
     price = models.DecimalField(decimal_places=2, max_digits=20, null=True, blank=True)
     sale_price = models.DecimalField(decimal_places=2, max_digits=20)
@@ -73,7 +75,7 @@ class TourVariation(models.Model):
             return self.price
 
     def get_absolute_url(self):
-        return self.product.get_absolute_url()
+        return self.tour.get_absolute_url()
 
 
 

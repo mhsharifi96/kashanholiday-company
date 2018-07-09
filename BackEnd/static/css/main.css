@@ -254,7 +254,6 @@ footer {
   background-color:  #F3F3F3;
   color: #222;
   padding-top: 2rem;
-  margin-top: 1em;
 }
 
 hr.light {
@@ -571,15 +570,21 @@ section h3.section-subheading {
 /* #######################contact########################### */
 #sections{
   padding: 0;
+  background-color: #F3F3F3;
 }
 .height-60{
-  min-height: 60vh;
+  min-height: 40vh;
+}
+#contact{
+  width: 90%;
 }
 #contact .card{
-  background: rgba(255, 224, 179,0.5)
+  background: rgba(255, 224, 179,0.5);
+  width: 75%;
+  float: right;
 }
 #contact .card:hover{
-  background: rgba(255, 224, 179,0.8)
+  background: rgba(255, 224, 179,0.8);
 }
 #contact .card-header{
   color:#e68a00;
@@ -589,7 +594,11 @@ section h3.section-subheading {
   background:  #ffcc80;
   border: #e68a00;
 }
+#contact .input-group-prepend .form-control{
+  width: 85%;
+}
 .contact-btn{
+  width: 70%;
   color: #e68a00;
   background:  #ffcc80;
 }
@@ -604,7 +613,7 @@ section h3.section-subheading {
 .scrollTop{
   position: fixed;
   bottom: 70px;
-  right: 10px;
+  right: 20px;
 }
 .fix{
   position:fixed;

@@ -30,12 +30,14 @@
 				<div class="row">
 					<div class="login">
 						 به کاشان هالیدی خوش آمدید.
-						 <a href="#"> 
+						 <a href="{% url 'accounts:login' %}"> 
 							 وارد شوید
 						 </a>
 					</div>
 					<div class="signin">
+						<a href="{% url 'accounts:signup' %}">
 						ثبت نام کنید
+						</a>
 					</div>
 					<div class="discount">
 						کارت تخفبف
@@ -53,19 +55,29 @@
 		<duv class="collapse navbar-collapse" id="navbar-Responsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item act">
-					<a href="#" class="nav-link">Home</a>
+					<a href="#" class="nav-link">
+						صفحه اصلی
+					</a>
 				</li>
 				<li class="nav-item">
-					<a href="{% url "tours:List_Tour"%}" class="nav-link">Tour</a>
+					<a href="{% url "tours:List_Tour"%}" class="nav-link">
+						تور	
+					</a>
 				</li>
 				<li class="nav-item">
-					<a href="#" class="nav-link">Hotel</a>
+					<a href="#" class="nav-link">
+						هتل	
+					</a>
 				</li>
 				<li class="nav-item">
-					<a href="{% url 'restaurants:list' %}" class="nav-link">Restuarant</a>
+					<a href="{% url 'restaurants:list' %}" class="nav-link">
+						رستوران
+					</a>
 				</li>	
 				<li class="nav-item ">
-					<a href="{% url 'blog:list' %}" class="nav-link">Blog</a>
+					<a href="{% url 'blog:list' %}" class="nav-link">
+						وبلاگ
+					</a>
 				</li>
 			</ul>
 		</div>
@@ -92,8 +104,12 @@
 	<!-- <div class="row"> -->
 		<div class=" col-centered ">
 			<div class="carousel-caption">
-					<h1 class="display-2 banner">Kashan Holiday</h1>
-					<h3 class="banner2">Complete Tourism Website</h3>
+					<h1 class="display-2 banner">
+						کاشان هالیدی	
+					</h1>
+					<h3 class="banner2">
+						وبسایت توریستی و گردشگری
+					</h3>
 					<div class="input-group">
 						<div class="main-search input-group-prepend">					
 							<span class="input-group-text" id="input-email">
@@ -267,8 +283,8 @@
 										<span class="input-group-text" id="input-text">
 											<i class="fas fa-user"></i>
 										</span>
-										<input type="text" id="text" class="form-control form-control-lg"
-										placeholder="Eenter Your name here">
+										<input type="text" id="text" class="form-control"
+										placeholder="Enter Your name">
 									</div>
 								</div>
 								<div class="input-group my-3">
@@ -276,8 +292,8 @@
 										<span class="input-group-text" id="input-text">
 											<i class="fas fa-phone"></i>
 										</span>
-										<input type="text" id="text" class="form-control form-control-lg"
-										placeholder="Eenter Your phone here">
+										<input type="text" id="text" class="form-control"
+										placeholder="Enter Your phone here">
 									</div>
 								</div>
 								<div class="input-group my-3">
@@ -285,11 +301,11 @@
 										<span class="input-group-text" id="input-email">
 											<i class="fas fa-envelope"></i>
 										</span>
-										<input type="phone" id="email" class="form-control form-control-lg"
-										placeholder="Eenter Your email here">
+										<input type="phone" id="email" class="form-control"
+										placeholder="Enter Your email">
 									</div>
 								</div>
-								<button class="btn btn-block btn-lg text-uppercase contact-btn">
+								<button class="btn text-uppercase contact-btn">
 									<i class="far fa-hand-point-right mr-2"></i>
 									click here
 								</button>
@@ -306,7 +322,7 @@
 
 <!--- Footer -->
 <footer>
-<div  id="Footer">
+<div  class="container" id="Footer">
 	<div class="row text-center">
 		<div class="col-sm-4 col-md-6">
 			<img src="" alt="">

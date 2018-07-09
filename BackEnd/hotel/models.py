@@ -1,5 +1,7 @@
 from django.db import models
 from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.db.models.signals import post_save, pre_save
 # Create your models here.
 
 User = settings.AUTH_USER_MODEL
@@ -38,8 +40,11 @@ class RoomType(models.Model):
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.typeName
+
     def get_absolute_url(self):
-        pass
+        return reverse("room_type", kwargs={"pk": self.pk})
 
     class Meta:
         verbose_name = u'نوع اتاق'
@@ -58,7 +63,26 @@ class HotelRoom(models.Model):
         return self.roomNumber
     
     def get_price(self):
-        pass
+        if self.sale_price is not None:
+            return self.sale_price
+        else:
+            return self.price
 
     def get_absolute_url(self):
-        pass
+        return self.roomType.get_absolute_url()
+
+
+
+def product_saved_receiver(sender, instance, *args, **kwargs):
+    print(sender)
+    roomtype = instance
+    variations = roomtype.hotelroom_set.all()
+    if variations.count() == 0:
+        new_var = HotelRoom()
+        new_var.roomType = roomtype
+        new_var.roomNumber = "123"
+        new_var.price = roomtype.price
+        new_var.save()
+    # variations = HotelRoom.objects.filter(roomtype=roomtype)
+
+post_save.connect(product_saved_receiver, sender=RoomType)

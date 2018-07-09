@@ -76,6 +76,7 @@ class TourVariation(models.Model):
         return self.product.get_absolute_url()
 
 
+
 def tour_post_save_receiver(sender, instance, created, *args, **kwargs):
     print(sender)
     print(instance)

@@ -35,12 +35,5 @@ def register(request):
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
-            return render(request,
-                          'accounts/register_done.html')
-                
-                       
-
-
-
-    
+            return render(request,'accounts/register_done.html')
     return render(request,'accounts/signup.html',{'form':user_form})

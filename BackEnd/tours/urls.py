@@ -3,6 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^$', views.List_Tours, name='List_Tour'),
-    url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$', views.Details_Tours,name='Details_Tours'),
+    url(r'^he$', views.TourListView.as_view(), name='Tour_List'),
+    url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$', views.TourDetailView,name='Tour_Detail'),
 ]

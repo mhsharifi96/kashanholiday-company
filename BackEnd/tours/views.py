@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 from django.shortcuts import render
 # Create your views here.
 # class
@@ -7,11 +8,25 @@ from django.shortcuts import render
 from .models import Tour
 from attractions.models import Gallery
 import datetime
+from django.utils import timezone
+
+
+class TourListView(ListView):
+    model = Tour
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(TourListView, self).get_context_data(*args, **kwargs)
+        context["now"] = timezone.now()
+        return context
+    # template_name = "tour_list.html"
+
+
 
 
 class TourDetailView(DetailView):
     model = Tour
-    template_name = "tour_detail.html."
+    # template_name = "detail_tour.html"
+
 
 
 # def product_detail_view_func(request, id):

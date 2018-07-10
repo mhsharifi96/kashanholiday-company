@@ -64,7 +64,8 @@ class TourVariation(models.Model):
     price = models.DecimalField(decimal_places=2, max_digits=20, null=True, blank=True)
     sale_price = models.DecimalField(decimal_places=2, max_digits=20)
     active = models.BooleanField(default=True)
-    capacity = models.PositiveIntegerField(default="-1", blank=True)  # unlimited
+    inventory = models.PositiveIntegerField(null=True, blank=True)  # unlimited
+
 
     def __str__(self):
         return self.title
@@ -89,7 +90,7 @@ def tour_post_save_receiver(sender, instance, created, *args, **kwargs):
         new_var.title = "Default"
         new_var.price = tour.price
         new_var.save()
-        
+
 
 
 post_save.connect(tour_post_save_receiver, sender=Tour)

@@ -8,29 +8,31 @@ from django.utils import timezone
 import datetime
 # Create your views here.
 # class
-from .forms import TourVariationInventoryForm
+from .forms import TourVariationInventoryForm, TourVariationInventoryFormSet
 from .models import Tour, TourVariation
 from attractions.models import Gallery
 
 
 class TourVariationListView(ListView):
-    model = Tour
-    queryset = Tour.objects.all()
+    model = TourVariation
+    queryset = TourVariation.objects.all()
 
     def get_context_data(self, *args, **kwargs):
         context = super(TourVariationListView, self).get_context_data(*args, **kwargs)
-
+        context["formset"] = TourVariationInventoryFormSet(queryset=self.get_queryset())
         return context
     # template_name = "tour_list.html"
 
     def get_queryset(self, *args, **kwargs):
         tour_pk = self.kwargs.get("pk")
+        queryset = TourVariation.objects.all()
         if tour_pk:
             tour = get_object_or_404(Tour, pk=tour_pk)
             queryset = TourVariation.objects.filter(tour=tour)
         return queryset
 
     def post(self, request, *args, **kwargs):
+        print(request.POST)
         raise Http404
 
 

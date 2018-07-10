@@ -1,5 +1,7 @@
 from .models import TourVariation
 from django import forms
+from django.forms.models import modelformset_factory
+
 
 class TourVariationInventoryForm(forms.ModelForm):
     class Meta:
@@ -9,3 +11,5 @@ class TourVariationInventoryForm(forms.ModelForm):
             "sale_price",
             "inventory"
         ]
+
+TourVariationInventoryFormSet = modelformset_factory(TourVariation, form=TourVariationInventoryForm, extra=0)

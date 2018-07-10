@@ -57,6 +57,7 @@ class Tour(models.Model):
         return reverse('tours:Tour_Detail', args=[self.id,self.slug])
 
 
+
 class TourVariation(models.Model):
     tour = models.ForeignKey(Tour, on_delete=models.PROTECT)
     title = models.CharField(max_length=120, verbose_name=u'نام')
@@ -80,9 +81,15 @@ class TourVariation(models.Model):
 
 
 def tour_post_save_receiver(sender, instance, created, *args, **kwargs):
-    print(sender)
-    print(instance)
-    print(created)
+    tour = instance
+    variations = tour.tourvariation_set.all()
+    if variations.count() == 0:
+        new_var = TourVariation()
+        new_var.tour = tour
+        new_var.title = "Default"
+        new_var.price = tour.price
+        new_var.save()
+        
 
 
 post_save.connect(tour_post_save_receiver, sender=Tour)
@@ -113,3 +120,4 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+

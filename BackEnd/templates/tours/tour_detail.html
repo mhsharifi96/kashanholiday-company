@@ -73,7 +73,9 @@
         <div id="page-content" class="col-md-8 col-xs-12">
             <div class="entry-content margin-top70">
                 <div class="vc_row wpb_row vc_row-fluid">
+                    <!-- <div class="col-sm-8"> -->
                     <h1 style="text-align: right">{{tour.name}}</h1>
+                    <!-- </div> -->
                     <div class="row text-center" style="text-align: center">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
@@ -104,6 +106,27 @@
                     <div class="wpb_wrapper">
                         <p style="text-align: right">
                             {{tour.description}}
+                            <br>
+                            <br>
+                            <div class="col-sm-1">
+                            <h4>{{ object.price }}</h4>
+                            </div>
+                            <div class="col-sm-4">
+                            {% if object.tourvariation_set.count > 1 %}
+                            <select class="form-control">
+
+                                {% for vari_obj in object.tourvariation_set.all %}
+
+                                <option value="{{ vari_obj.id }}">{{ vari_obj }}</option>
+
+                                {% endfor %}
+
+                            </select>
+
+                            {% endif %}
+                            <br>
+                            <a href="#">Add to Cart</a>
+                            </div>
                           </p>
 
                         <br><br><br>

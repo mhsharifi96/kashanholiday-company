@@ -2,13 +2,36 @@ from django.shortcuts import render,get_object_or_404
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.shortcuts import render
+from django.db.models import Q
 # Create your views here.
 # class
 
-from .models import Tour
+from .models import Tour, TourVariation
 from attractions.models import Gallery
 import datetime
 from django.utils import timezone
+
+
+class TourVariationListView(ListView):
+    model = Tour
+    queryset = Tour.objects.all()
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(TourVariationListView, self).get_context_data(*args, **kwargs)
+        context["now"] = timezone.now()
+        context["query"] = self.request.GET.get("q")
+        return context
+    # template_name = "tour_list.html"
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super(TourVariationListView, self).get_queryset(*args, **kwargs)
+        query = self.request.GET.get("q")
+        # if query:
+        #     qs = self.model.objects.filter(
+        #         Q(name__icontains=query) |
+        #         Q(description__icontains=query)
+        #     )
+        return qs
 
 
 class TourListView(ListView):
@@ -18,10 +41,19 @@ class TourListView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super(TourListView, self).get_context_data(*args, **kwargs)
         context["now"] = timezone.now()
+        context["query"] = self.request.GET.get("q")
         return context
     # template_name = "tour_list.html"
 
-
+    def get_queryset(self, *args, **kwargs):
+        qs = super(TourListView, self).get_queryset(*args, **kwargs)
+        query = self.request.GET.get("q")
+        if query:
+            qs = self.model.objects.filter(
+                Q(name__icontains=query) |
+                Q(description__icontains=query)
+            )
+        return qs
 
 
 class TourDetailView(DetailView):

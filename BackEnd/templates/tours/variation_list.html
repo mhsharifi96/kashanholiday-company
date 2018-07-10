@@ -1,0 +1,22 @@
+{% extends 'tours/base.html' %}
+
+
+{% block content %}
+
+
+<table class="table">
+    {% for object in object_list %}
+
+    <tr>
+        <td>
+            <h1><a href='{{ object.get_absolute_url }}'> {{object.name }}</a></h1>
+        </td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+
+
+
+{% endblock %}

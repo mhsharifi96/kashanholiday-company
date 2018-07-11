@@ -50,13 +50,25 @@
     </div>
 </nav>
 <script>
+{% block jquery %}
 
+var price = $(".variation_select option:selected").attr("data-price");
+$("#price").text(price);
+
+$(".variation_select").change(function(){
+    var price = $(".variation_select option:selected").attr("data-price");
+    $("#price").text(price);
+
+    var img = $(".variation_select option:selected").attr("data-img")
+})
+
+{% endblock %}
 </script>
 {% block content %}
 <!--- Image header -->
-<div class="image-header">
+<!-- <div class="image-header"> -->
     <!-- <img src="./../img/karvansara.jpg" alt=""> -->
-</div>
+<!-- </div> -->
 
 <!-- Portfolio Grid -->
 <div class="container">
@@ -113,15 +125,15 @@
                             <br>
                             <br>
                             <div class="col-sm-1">
-                            <h4>{{ object.price }}</h4>
+                            <h4 id="price">{{ object.price }}</h4>
                             </div>
                             <div class="col-sm-4">
                             {% if object.tourvariation_set.count > 1 %}
-                            <select class="form-control">
+                            <select class="form-control variation_select">
 
                                 {% for vari_obj in object.tourvariation_set.all %}
 
-                                <option value="{{ vari_obj.id }}">{{ vari_obj }}</option>
+                                <option data-img="#" data-price="{{ vari_obj.price }}" value="{{ vari_obj.id }}">{{ vari_obj }}</option>
 
                                 {% endfor %}
 

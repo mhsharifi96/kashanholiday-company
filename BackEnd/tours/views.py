@@ -1,4 +1,5 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404, redirect
+from django.contrib import messages
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.shortcuts import render
@@ -32,6 +33,18 @@ class TourVariationListView(ListView):
         return queryset
 
     def post(self, request, *args, **kwargs):
+        formset = TourVariationInventoryFormSet(request.POST, request.FILES)
+        if formset.is_valid():
+            formset.save(commit=False)
+            for form in formset:
+                new_item = form.save(commit=False)
+                tour_pk = self.kwargs.get("pk")
+                tour = get_object_or_404(Tour, pk=tour_pk)
+                new_item.tour = tour
+                new_item.save()
+                
+            messages.success(request, "Your inventory and pricing has been Updated!!!")
+            return redirect("/tours")
         print(request.POST)
         raise Http404
 

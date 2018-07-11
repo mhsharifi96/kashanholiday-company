@@ -9,7 +9,10 @@
 
     <tr>
         <td>
-            <h1><a href='{{ object.get_absolute_url }}'> {{object.name }}</a></h1>
+            <a href='{{ object.get_absolute_url }}'>{{object.name }}</a>
+        </td>
+        <td>
+            {{ object.inventory }}
         </td>
     </tr>
 
@@ -17,7 +20,14 @@
 </table>
 
 <form method="POST" action="">{% csrf_token %}
+
+{{ formset.management_form }}
+{% for form in formset %}
+{{ form.instance.tour.name }}
+{{ form.instance.name }}
 {{ formset.as_p }}
+
+{% endfor %}
 <input type="submit" value="Update" class="btn"/>
 </form>
 

@@ -9,7 +9,8 @@ class TourVariationInventoryForm(forms.ModelForm):
         fields = [
             "price",
             "sale_price",
-            "inventory"
+            "inventory",
+            "active"
         ]
 
 TourVariationInventoryFormSet = modelformset_factory(TourVariation, form=TourVariationInventoryForm, extra=0)

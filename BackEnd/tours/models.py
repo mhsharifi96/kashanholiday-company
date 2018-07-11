@@ -54,7 +54,8 @@ class Tour(models.Model):
 
     def get_absolute_url(self):
         # return reverse('Tour_Detail', kwargs={"pk":self.pk, "slug":self.slug})
-        return reverse('tours:Tour_Detail', args=[self.id,self.slug])
+        # args=[self.pk, self.slug],
+        return reverse('tours:Tour_Detail', kwargs={"pk":self.pk, "slug":self.slug})
 
 
 

@@ -22,9 +22,11 @@
 <form method="POST" action="">{% csrf_token %}
 
 {{ formset.management_form }}
+
 {% for form in formset %}
+
 {{ form.instance.tour.name }}
-{{ form.instance.name }}
+{{ form.instance.title }}
 {{ formset.as_p }}
 
 {% endfor %}

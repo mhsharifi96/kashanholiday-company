@@ -36,20 +36,24 @@ class TourVariationListView(StaffRequiredMixin, ListView):
     def post(self, request, *args, **kwargs):
         formset = TourVariationInventoryFormSet(request.POST, request.FILES)
         # print("Result Valid => ", formset.is_valid())
+        # print(request.POST)
         if formset.is_valid():
             formset.save(commit=False)
             for form in formset:
                 new_item = form.save(commit=False)
+                # print("Title => ", new_item)
                 if new_item.title:
+                    # print("heloooooo")
                     tour_pk = self.kwargs.get("pk")
+                    print("Primary key = > ", tour_pk)
                     tour = get_object_or_404(Tour, pk=tour_pk)
                     new_item.tour = tour
                     new_item.save()
-            messages.success(request, "Your inventory and pricing has been Updated!!!")
-            print("helloo")
-            return redirect("/tours")
+                messages.success(request, "Your inventory and pricing has been Updated!!!")
+            # print("helloo")
+                return redirect("/tours")
         # print(request.POST)
-        # raise Http404
+        raise Http404
 
 
 class TourListView(ListView):

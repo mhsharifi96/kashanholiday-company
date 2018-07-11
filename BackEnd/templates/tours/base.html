@@ -61,13 +61,20 @@
                 <div class="container">
                 <div class="row">
 					{% if messages %}
-					<ul class="messages">
-						{% for message in messages %}
-						<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-							{{ message }}
-						</li>
-						{% endfor %}
-					</ul>
+					<div class="container">
+
+						<div class="alert alert-success text-center alert-dismissible">
+							<button type="button" class="close" data-dismiss="alert" aria-label="close">
+								<span aria-hidden="Close">&times;</span>
+							</button>
+							{% for message in messages %}
+								<p{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+									{{ message }}
+								</p><br>
+							{% endfor %}
+						</div>
+
+					</div>
 					{% endif %}
 				{%block content%}
 

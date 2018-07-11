@@ -68,3 +68,8 @@
 .right .search{
     margin: 15px 0 5px;
 }
+
+.org-price {
+    color:red;
+    text-decoration:line-through;
+}

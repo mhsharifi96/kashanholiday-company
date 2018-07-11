@@ -16,8 +16,8 @@
     <script src="{%static "js/bootstrap.min.js" %}"></script>
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <link href="{% static "css/tour_style.css"%}" rel="stylesheet">
-    <link href="{% static "css/main.css" %}" rel="stylesheet">
+    <link href="{% static 'css/tour_style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
 </head>
 <body>
 
@@ -57,7 +57,7 @@ function setPrice(){
 
     var sale_price = $(".variation_select option:selected").attr("data-sale-price");
     if (sale_price != "" && sale_price != "None" && sale_price != null){
-        $("#price").html("<h4>" + sale_price + " <small class='org-price'> Original Price: " + price + "</small></h4>");
+        $("#price").html("<h4>" + sale_price + " <small class='org-price'>Original Price: " + price + "</small></h4>");
     } else{
         $("#price").html(price);
     }
@@ -70,8 +70,6 @@ $(".variation_select").change(function(){
     setPrice();
     var img = $(".variation_select option:selected").attr("data-img");
     $("img").attr("src", img);
-
-
 
 })
 
@@ -142,11 +140,11 @@ $(".variation_select").change(function(){
                             <br>
                             <br>
 
+                            
                             <div class="col-sm-4 text-align" align="left">
-                                    <div class="col-sm-8" align="left">
+                                    {% if object.tourvariation_set.count > 1 %}
                                         <h4 id="price">{{ object.tourvariation_set.first.price }}</h4>
-                                    </div>
-                            {% if object.tourvariation_set.count > 1 %}
+                           
                             <select class="form-control variation_select">
 
                                 {% for vari_obj in object.tourvariation_set.all %}
@@ -156,16 +154,16 @@ $(".variation_select").change(function(){
                                 {% endfor %}
 
                             </select>
+
                             {% else %}
-                            <div class="col-sm-16" align="left">
+
                                 <h4 id="price">{% if object.tourvariation_set.first.sale_price %}
-                                        <small class="org-price"> object.tourvariation_set.first.sale_price }} </small>
+                                        {{ object.tourvariation_set.first.sale_price }}
+                                        <small class="org-price"> {{ object.tourvariation_set.first.price }} </small>
                                         {% else %}
                                         {{ object.tourvariation_set.first.price }}
                                         {% endif %}
-
                                 </h4>
-                            </div>
 
                             {% endif %}
                             <br>

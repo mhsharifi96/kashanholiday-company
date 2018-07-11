@@ -75,16 +75,18 @@
 						</div>
 
 					</div>
+
 					{% endif %}
+				</div>
+			</div>
+		</div>
 				{%block content%}
 
                 {%endblock content%}
                     
                               
-                </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-12">
+
+            <!-- <div class="col-md-4 col-12">
                 <div class="container">
                 <div class="row right">
                     <div class="search col-md-12">
@@ -112,7 +114,7 @@
                         <div class="search-header">
                             <h1>Pictures</h1>
                         </div>
-                        <div class="row img-gallery">    
+                        <div class="row img-gallery">     -->
                         
 						{% block gallery %}
 							
@@ -181,7 +183,13 @@
 </footer>
 </body>
 </html>
+<script>
+	$(document).ready(function(){
+		{% block jquery %}
 
+		{% endblock %}
+	});
+</script>
 
 
 

@@ -11,7 +11,7 @@ class StaffRequiredMixin(object):
         return staff_member_required(view)
 
     @method_decorator(login_required)
-    def dispatch(self, request, *args, *kwargs):
+    def dispatch(self, request, *args, **kwargs):
         if request.user.is_staff:
             return super(StaffRequiredMixin, self).dispatch(request, *args, **kwargs)
         else:
@@ -24,5 +24,5 @@ class LoginRequiredMixin(object):
         return login_required(view)
 
     @method_decorator(login_required)
-    def dispatch(self, request, *args, *kwargs):
+    def dispatch(self, request, *args, **kwargs):
         return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)

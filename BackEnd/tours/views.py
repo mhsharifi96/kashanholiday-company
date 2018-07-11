@@ -12,9 +12,10 @@ import datetime
 from .forms import TourVariationInventoryForm, TourVariationInventoryFormSet
 from .models import Tour, TourVariation
 from attractions.models import Gallery
+from .mixins import StaffRequiredMixin, LoginRequiredMixin
 
 
-class TourVariationListView(ListView):
+class TourVariationListView(StaffRequiredMixin, ListView):
     model = TourVariation
     queryset = TourVariation.objects.all()
 
@@ -34,19 +35,21 @@ class TourVariationListView(ListView):
 
     def post(self, request, *args, **kwargs):
         formset = TourVariationInventoryFormSet(request.POST, request.FILES)
+        # print("Result Valid => ", formset.is_valid())
         if formset.is_valid():
             formset.save(commit=False)
             for form in formset:
                 new_item = form.save(commit=False)
-                tour_pk = self.kwargs.get("pk")
-                tour = get_object_or_404(Tour, pk=tour_pk)
-                new_item.tour = tour
-                new_item.save()
-                
+                if new_item.title:
+                    tour_pk = self.kwargs.get("pk")
+                    tour = get_object_or_404(Tour, pk=tour_pk)
+                    new_item.tour = tour
+                    new_item.save()
             messages.success(request, "Your inventory and pricing has been Updated!!!")
+            print("helloo")
             return redirect("/tours")
-        print(request.POST)
-        raise Http404
+        # print(request.POST)
+        # raise Http404
 
 
 class TourListView(ListView):

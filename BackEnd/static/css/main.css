@@ -8,6 +8,10 @@ body {
   background-color: #fbfbfb;
   text-align: right;
 }
+.org-price {
+  color:red;
+  text-decoration:line-through;
+}
 .header{
   height: 20%;
   position: absolute;

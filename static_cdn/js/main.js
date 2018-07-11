@@ -1,11 +1,13 @@
 $(window).scroll(function(){
     let position = $(this).scrollTop();
 
-    if (position >=718){
+    if (position >=700){
         $('#back-to-top').addClass('scrollTop');
+        $('.navbar').addClass('fix');
     }
     else{
         $('#back-to-top').removeClass('scrollTop');
+        $('.navbar').removeClass('fix');
     }
 })
 

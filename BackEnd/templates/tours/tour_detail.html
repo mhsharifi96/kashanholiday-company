@@ -52,19 +52,33 @@
 <script>
 {% block jquery %}
 
-var price = $(".variation_select option:selected").attr("data-price");
-$("#price").text(price);
+function setPrice(){
+    var price = $(".variation_select option:selected").attr("data-price");
+
+    var sale_price = $(".variation_select option:selected").attr("data-sale-price");
+    if (sale_price != "" && sale_price != "None" && sale_price != null){
+        $("#price").html("<h4>" + sale_price + " <small class='org-price'> Original Price: " + price + "</small></h4>");
+    } else{
+        $("#price").html(price);
+    }
+}
+setPrice();
+// var price = $(".variation_select option:selected").attr("data-price");
+// $("#price").text(price);
 
 $(".variation_select").change(function(){
-    var price = $(".variation_select option:selected").attr("data-price");
-    $("#price").text(price);
+    setPrice();
+    var img = $(".variation_select option:selected").attr("data-img");
+    $("img").attr("src", img);
 
-    var img = $(".variation_select option:selected").attr("data-img")
+
+
 })
 
 {% endblock %}
 </script>
 {% block content %}
+
 <!--- Image header -->
 <!-- <div class="image-header"> -->
     <!-- <img src="./../img/karvansara.jpg" alt=""> -->
@@ -99,15 +113,18 @@ $(".variation_select").change(function(){
                                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                             </ol>
+                            {% if object.tourimage_set.count > 0 %}
                             <div class="carousel-inner">
                                 <!-- {%  for  data in slider|slice:":3" %} -->
+                                {% for img in object.tourimage_set.all %}
                                 <div class="carousel-item active">
                                     <!-- <img class="img-fluid" src="{{data.post_img.url}}"> -->
-                                    <img src="../../static/img/karvansara.jpg">       
-                                    far
+                                    <img id="img" class="img-responsive" src="{{ img.image.url }}">
                                 </div>
+                                {% endfor %}
                                 <!-- {% endfor%} -->
                             </div>
+                            {% endif %}
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
@@ -124,20 +141,31 @@ $(".variation_select").change(function(){
                             {{tour.description}}
                             <br>
                             <br>
-                            <div class="col-sm-1">
-                            <h4 id="price">{{ object.price }}</h4>
-                            </div>
-                            <div class="col-sm-4">
+
+                            <div class="col-sm-4 text-align" align="left">
+                                    <div class="col-sm-8" align="left">
+                                        <h4 id="price">{{ object.tourvariation_set.first.price }}</h4>
+                                    </div>
                             {% if object.tourvariation_set.count > 1 %}
                             <select class="form-control variation_select">
 
                                 {% for vari_obj in object.tourvariation_set.all %}
 
-                                <option data-img="#" data-price="{{ vari_obj.price }}" value="{{ vari_obj.id }}">{{ vari_obj }}</option>
+                                <option data-sale-price="{{ vari_obj.sale_price }}" data-img="#" data-price="{{ vari_obj.price }}" value="{{ vari_obj.id }}">{{ vari_obj }}</option>
 
                                 {% endfor %}
 
                             </select>
+                            {% else %}
+                            <div class="col-sm-16" align="left">
+                                <h4 id="price">{% if object.tourvariation_set.first.sale_price %}
+                                        <small class="org-price"> object.tourvariation_set.first.sale_price }} </small>
+                                        {% else %}
+                                        {{ object.tourvariation_set.first.price }}
+                                        {% endif %}
+
+                                </h4>
+                            </div>
 
                             {% endif %}
                             <br>

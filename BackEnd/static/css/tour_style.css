@@ -151,3 +151,7 @@ element {
 
 }
 
+.org-price {
+    color:red;
+    text-decoration:line-through;
+}

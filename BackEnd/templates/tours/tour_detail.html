@@ -1,5 +1,5 @@
 {% extends "tours/base.html" %}
-{% load static %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +16,8 @@
     <script src="{%static "js/bootstrap.min.js" %}"></script>
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <link href="{% static 'css/tour_style.css' %}" rel="stylesheet">
-    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'tours/tour_style.css' %}">
+    <link rel="stylesheet" href="{% static 'tours/main.css' %}">
 </head>
 <body>
 

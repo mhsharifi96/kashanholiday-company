@@ -36,9 +36,10 @@ post_delete.connect(cart_item_post_save_receiver, sender=CartItem)
 
 
 class Cart(models.Model):
-    user = models.ForeignKey(BasicUser, on_delete=models.PROTECT, null=True, blank=True)
-    items = models.ManyToManyField(TourVariation, through=CartItem)
-    timestamp = models.DateTimeField(auto_now_add=True, )
+    user = models.ForeignKey(BasicUser, on_delete=models.PROTECT, null=True, blank=True, verbose_name=u"کاربر")
+    items = models.ManyToManyField(TourVariation, through=CartItem, verbose_name=u"محتویات")
+    timestamp = models.DateTimeField(auto_now_add=True, verbose_name=u"زمانن ایجاد")
+    updated = models.DateTimeField(auto_now=True, verbose_name=u"به‌روزرسانی شده در")
     subtotal = models.DecimalField(max_digits=50, default=100.00, verbose_name=u'مجموع', decimal_places=2)
 
     class Meta:

@@ -9,6 +9,8 @@ body {
   text-align: right;
 }
 
+
+
 .org-price {
   color:red;
   text-decoration:line-through;
@@ -19,7 +21,7 @@ body {
   position: absolute;
   width: 100%;
   z-index: 10;
-  background-color: rgba(20,20,20,.5);
+  background-color: rgba(20, 20, 20, 0);
   /* border-bottom: 1px dotted #fff; */
   border-radius: 0 0 50px 50px; 
   font-size: 1.1em !important;

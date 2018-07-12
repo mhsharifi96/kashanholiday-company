@@ -57,7 +57,7 @@ function setPrice(){
 
     var sale_price = $(".variation_select option:selected").attr("data-sale-price");
     if (sale_price != "" && sale_price != "None" && sale_price != null){
-        $("#price").html("<h4>" + sale_price + " <small class='org-price'>Original Price: " + price + "</small></h4>");
+        $("#price").html("<h4>" + sale_price + " <small class='org-price'> " + price + "</small></h4>");
     } else{
         $("#price").html(price);
     }

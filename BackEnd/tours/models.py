@@ -113,7 +113,7 @@ class TourImage(models.Model):
         return self.tour.name
 
 
-class Category(models.Model):
+class TourCategory(models.Model):
     title = models.CharField(max_length=120, unique=True)
     slug = models.SlugField(unique=True)
     description = models.TextField(null=False, blank=True, default='', verbose_name=u'توضیحات')

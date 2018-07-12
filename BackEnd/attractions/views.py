@@ -6,12 +6,13 @@ from hotel.models import Hotel
 from attractions.models import Gallery
 # Create your views here.
 
+
 def Index_Page(request):
     tours= Tour.published.order_by('?')[:6]
     hotels = Hotel.published.order_by('?')[:3]
     attractions_photo = Gallery.objects.order_by('?')[:5]
 
-    return render(request,'index.html',{'tours':tours,
+    return render(request, 'index.html', {'tours':tours,
                         'hotels':hotels,
                         'attractions_photo':attractions_photo})
 

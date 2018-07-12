@@ -10,9 +10,14 @@ import datetime
 # Create your views here.
 # class
 from .forms import TourVariationInventoryForm, TourVariationInventoryFormSet
-from .models import Tour, TourVariation
+from .models import Tour, TourVariation, TourCategory
 from attractions.models import Gallery
 from .mixins import StaffRequiredMixin, LoginRequiredMixin
+
+
+class TourCategoryListView(ListView):
+    model = TourCategory
+    queryset = TourCategory.objects.all()
 
 
 class TourVariationListView(StaffRequiredMixin, ListView):

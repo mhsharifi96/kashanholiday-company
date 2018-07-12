@@ -58,7 +58,6 @@ class Tour(models.Model):
         return reverse('tours:Tour_Detail', kwargs={"pk":self.pk, "slug":self.slug})
 
 
-
 class TourVariation(models.Model):
     tour = models.ForeignKey(Tour, on_delete=models.PROTECT)
     title = models.CharField(max_length=120, verbose_name=u'نام')
@@ -66,7 +65,6 @@ class TourVariation(models.Model):
     sale_price = models.DecimalField(decimal_places=2, max_digits=20)
     active = models.BooleanField(default=True)
     inventory = models.PositiveIntegerField(null=True, blank=True)  # unlimited
-
 
     def __str__(self):
         return self.title

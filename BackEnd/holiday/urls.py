@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^contact/$', TemplateView.as_view(template_name='contact.html'), name='contact'),
     url(r'^accounts/', include('accounts.urls', namespace='account')),
     url(r'^tours/', include('tours.urls', namespace='tours')),
+    url(r'^tours/categories', include('tours.urls_categories', namespace='categories')),
     url(r'^cart/$', CartView.as_view(), name='cart'),
     url(r'^blog/posts/', include("blog.urls", namespace="blog")),
 ]

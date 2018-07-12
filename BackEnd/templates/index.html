@@ -1,5 +1,5 @@
 
-{% load  static %}
+{% load  staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,14 +17,22 @@
 	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
 
 	<script src="{% static "js/main.js" %}"></script>
-	<link href="{% static "css/main.css" %}" rel="stylesheet">
+	<link href="{% static 'css/main.css' %}" rel="stylesheet">
+	<link href="{% static 'css/main2.css' %}" rel="stylesheet">
+
 </head>
 <body>
 <!-- Navigation -->
 <div class="header d-none d-lg-block">
-		<button type="button" class="basket btn btn-outline-light">
-			سبد خرید
-		</button>
+		 <!-- <button type="button" class="basket btn btn-outline-light">
+		 	سبد خرید
+		</button> -->
+		<ul class="nav navbar-nav navbar-left">
+
+		</ul>
+
+
+
 		<div class="top-header">
 			<div class="container"></div>
 				<div class="row">
@@ -52,6 +60,9 @@
 		<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbar-Responsive">
 			<span class="navbar-toggler-icon my-toggler "></span>
 		</button>
+		<li>
+			<a href="#"><i class="fas fa-shopping-cart navbar-cart"></i><span class="badge">0</span></a>
+		</li>
 		<duv class="collapse navbar-collapse" id="navbar-Responsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item act">

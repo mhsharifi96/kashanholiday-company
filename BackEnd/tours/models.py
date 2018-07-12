@@ -132,3 +132,25 @@ class TourCategory(models.Model):
     def get_absolute_url(self, *args, **kwargs):
         return reverse("category_detail", kwargs={"slug": self.slug})
 
+
+def image_upload_to_featured(instance, filename):
+    title = instance.tour.name
+    slug = slugify(title)
+    file_extension = filename.split(".")[1]
+    new_filename = "{0}-{1}.{2}".format(slug, instance.id, file_extension)
+    return "tours/{0}/featured/{1}".format(slug, new_filename)
+
+
+class TourFeatured(models.Model):
+    tour = models.ForeignKey(Tour, on_delete=models.PROTECT, verbose_name=u"نام تور")
+    image = models.ImageField(upload_to=image_upload_to_featured, verbose_name=u"تصویر")
+    title = models.CharField(max_length=120, null=True, blank=True, verbose_name=u"عنوان")
+    text = models.CharField(max_length=220, null=True, blank=True, verbose_name=u"متن")
+    text_right = models.BooleanField(default=False, verbose_name=u"راست‌چین")
+    show_price = models.BooleanField(default=False, verbose_name=u"نمایش قیمت")
+    active = models.BooleanField(default=True, verbose_name=u"فعال")
+
+    def __str__(self):
+        return self.tour.name
+
+    

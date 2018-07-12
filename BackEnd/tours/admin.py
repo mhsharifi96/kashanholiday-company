@@ -1,11 +1,12 @@
 from django.contrib import admin
-from .models import Tour, TourVariation, TourImage, TourCategory
+from .models import Tour, TourVariation, TourImage, TourCategory, TourFeatured
 from restaurants.models import RestaurantLocation
 # Register your models here.
 # admin.site.register(Tour)
 admin.site.register(TourVariation)
 admin.site.register(TourImage)
 admin.site.register(TourCategory)
+admin.site.register(TourFeatured)
 # class ProductImagesInline(admin.TabularInline):
 #     model = Tour
 

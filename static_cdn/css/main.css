@@ -9,6 +9,11 @@ body {
   text-align: right;
 }
 
+.navbar-cart{
+  font-size: 33px;
+  vertical-align: middle;
+}
+
 .org-price {
   color:red;
   text-decoration:line-through;

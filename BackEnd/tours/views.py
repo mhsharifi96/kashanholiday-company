@@ -23,6 +23,13 @@ class TourCategoryListView(ListView):
 class TourCategoryDetailView(DetailView):
     model = TourCategory
 
+    def get_context_data(self, *args, **kwargs):
+        context = super(TourCategoryDetailView, self).get_context_data(*args, **kwargs)
+        obj = self.get_object()
+        tours_set = obj.tour_set.all()
+        default_tours = obj.default_category.all()
+        tours = (tours_set | default_tours).distinct()
+        context["tours"] = tours
 
 
 class TourVariationListView(StaffRequiredMixin, ListView):

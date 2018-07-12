@@ -107,17 +107,28 @@ class TourImage(models.Model):
     tour = models.ForeignKey(Tour, on_delete=models.PROTECT)
     image = models.ImageField(upload_to=image_upload_to)
 
+    class Meta:
+        verbose_name = u'تصویر'
+        verbose_name_plural = u'تصاویر'
+
     def __str__(self):
         return self.tour.name
 
 
 class TourCategory(models.Model):
-    title = models.CharField(max_length=120, unique=True)
+    title = models.CharField(max_length=120, unique=True, verbose_name=u"نام دسته")
     slug = models.SlugField(unique=True)
     description = models.TextField(null=False, blank=True, default='', verbose_name=u'توضیحات')
     active = models.BooleanField(default=True, verbose_name=u'فعال')
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
 
+    class Meta:
+        verbose_name = u'دسته‌بندی'
+        verbose_name_plural = u'دسته‌بندی‌ها'
+
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self, *args, **kwargs):
+        return reverse("category_detail", kwargs={"slug": self.slug})
 

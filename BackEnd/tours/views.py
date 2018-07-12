@@ -20,6 +20,11 @@ class TourCategoryListView(ListView):
     queryset = TourCategory.objects.all()
 
 
+class TourCategoryDetailView(DetailView):
+    model = TourCategory
+
+
+
 class TourVariationListView(StaffRequiredMixin, ListView):
     model = TourVariation
     queryset = TourVariation.objects.all()

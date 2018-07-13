@@ -82,7 +82,7 @@ class RestaurantUpdateView(LoginRequiredMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super(RestaurantUpdateView, self).get_context_data(**kwargs)
         name = self.get_object().name
-        context['title'] = f'Update Restaurant: {name}'
+        #context['title'] = f'Update Restaurant: {name}'
         return context
 
     def get_queryset(self):

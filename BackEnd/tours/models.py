@@ -62,7 +62,7 @@ class TourVariation(models.Model):
     tour = models.ForeignKey(Tour, on_delete=models.PROTECT)
     title = models.CharField(max_length=120, verbose_name=u'نام')
     price = models.DecimalField(decimal_places=2, max_digits=20, null=True, blank=True)
-    sale_price = models.DecimalField(decimal_places=2, max_digits=20)
+    sale_price = models.DecimalField(decimal_places=2, max_digits=20, null=True, blank=True)
     active = models.BooleanField(default=True)
     inventory = models.PositiveIntegerField(null=True, blank=True)  # unlimited
 
@@ -85,7 +85,7 @@ class TourVariation(models.Model):
         return "%s?item=%s&qty=1&delete=True" % (reverse("cart"), self.id)
 
     def get_title(self):
-        return "%s - %s" % (self.product.title, self.title)
+        return "%s - %s" % (self.tour.name, self.title)
 
 
 def tour_post_save_receiver(sender, instance, created, *args, **kwargs):

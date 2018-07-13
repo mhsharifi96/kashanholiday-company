@@ -1,6 +1,6 @@
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.base import View
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from tours.models import TourVariation
 from django.urls import reverse
@@ -32,7 +32,9 @@ class CartView(SingleObjectMixin, View):
     def get(self, request, *args, **kwargs):
         cart = self.get_object()
         item_id = request.GET.get("item")
-        delete_item = request.GET.get("delete")
+        delete_item = request.GET.get("delete", False)
+        flash_message = ""
+        item_added = False
         if item_id:
             item_instance = get_object_or_404(TourVariation, id=item_id)
             qty = request.GET.get("qty", 1)
@@ -41,7 +43,6 @@ class CartView(SingleObjectMixin, View):
                     delete_item = True
             except:
                 raise Http404
-
             cart_item, created = CartItem.objects.get_or_create(cart=cart, item=item_instance)
             if created:
                 flash_message = "Successfully added to the cart"
@@ -56,4 +57,48 @@ class CartView(SingleObjectMixin, View):
                 cart_item.save()
             if not request.is_ajax():
                 return HttpResponseRedirect(reverse("cart"))
+            # return cart_item.cart.get_absolute_url()
 
+        if request.is_ajax():
+            try:
+                total = cart_item.line_item_total
+            except:
+                total = None
+            try:
+                subtotal = cart_item.cart.subtotal
+            except:
+                subtotal = None
+
+            try:
+                cart_total = cart_item.cart.total
+            except:
+                cart_total = None
+
+            try:
+                tax_total = cart_item.cart.tax_total
+            except:
+                tax_total = None
+
+            try:
+                total_items = cart_item.cart.items.count()
+            except:
+                total_items = 0
+
+            data = {
+                "deleted": delete_item,
+                "item_added": item_added,
+                "line_total": total,
+                "subtotal": subtotal,
+                "cart_total": cart_total,
+                "tax_total": tax_total,
+                "flash_message": flash_message,
+                "total_items": total_items
+            }
+
+            return JsonResponse(data)
+
+        context = {
+            "object": self.get_object()
+        }
+        template = self.template_name
+        return render(request, template, context)

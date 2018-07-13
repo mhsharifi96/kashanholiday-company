@@ -2,7 +2,9 @@
 
 <script>
     {% block jquery %}
-
+    $(".item-qty").change(function () {
+        $(this).next(".btn-update").fadeIn();
+    })
     {% endblock %}
 </script>
 
@@ -26,7 +28,7 @@
             <input type="submit" class="btn btn-link btn-update" style="display: none;" value="Update item">
         </td>
         <td>
-            {{ item.line_total }}
+            {{ item.line_item_total }}
         </td>
         <td class="text-right"><a href="{{ item.remove }}">x</a>
         </td>

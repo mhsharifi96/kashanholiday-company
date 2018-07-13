@@ -88,7 +88,6 @@ class TourVariation(models.Model):
         return "%s - %s" % (self.product.title, self.title)
 
 
-
 def tour_post_save_receiver(sender, instance, created, *args, **kwargs):
     tour = instance
     variations = tour.tourvariation_set.all()
@@ -98,7 +97,6 @@ def tour_post_save_receiver(sender, instance, created, *args, **kwargs):
         new_var.title = "Default"
         new_var.price = tour.price
         new_var.save()
-
 
 
 post_save.connect(tour_post_save_receiver, sender=Tour)

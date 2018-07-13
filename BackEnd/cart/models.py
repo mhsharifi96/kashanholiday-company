@@ -19,7 +19,7 @@ class CartItem(models.Model):
     cart = models.ForeignKey("Cart", on_delete=models.PROTECT, verbose_name=u"سبد خرید")
     item = models.ForeignKey(TourVariation, on_delete=models.PROTECT, verbose_name=u"مورد")
     quantity = models.PositiveIntegerField(default=1, verbose_name=u"تعداد")
-    line_item_total = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=u"")
+    line_item_total = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=u"قیمت")
 
     def __str__(self):
         return self.item.name

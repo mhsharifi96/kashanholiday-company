@@ -136,3 +136,10 @@ from .models import RestaurantLocation
 #
 #
 
+class RestaurantListView(ListView):
+    model=RestaurantLocation
+    template_name= 'restaurants/test_list.html'
+    paginate_by=10
+    def get_context_data(self,**kwargs):
+        context=super().get_context_data(**kwargs)
+        return context

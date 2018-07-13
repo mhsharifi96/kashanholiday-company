@@ -1,20 +1,27 @@
 {% extends 'tours/base.html' %}
+{% load static %}
 
 
 {% block content %}
 
 
-<table class="table">
+
     {% for object in object_list %}
 
-    <tr>
-        <td>
-            <h1><a href='{{ object.get_absolute_url }}'> {{object.name }}</a></h1>
-        </td>
-    </tr>
+    <div class="col-md-6 col-sm-6 col-12 portfolio-item">
+            <a class="portfolio-link" href="{{ object.get_absolute_url }}">
+                    <img class="img-fluid" src="{% if object.image%}{{object.image.url}}{%else%}{% static "img/Camel-riding-Maranjab-Desert.jpg" %}{%endif%}" alt="{{object.name}}">
+            </a>
+            <div class="portfolio-caption">
+                <h4>{{object.name}}</h4>
+                 <a href="{{ object.get_absolute_url }}">{{ object.name }}</a>
+                <p>{{object.description|truncatewords:8|linebreaks}}</p>
+                
+            </div>
+        </div>
 
     {% endfor %}
-</table>
+
 
 
 

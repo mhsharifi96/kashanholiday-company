@@ -1,9 +1,11 @@
 from django.db import models
+from django.conf import settings
 from decimal import Decimal
 from tours.models import Tour, TourVariation
 from accounts.models import BasicUser
 from django.db.models.signals import pre_save, post_save, post_delete
 # Create your models here.
+User = settings.AUTH_USER_MODEL
 
 
 class CartItemHotel(models.Model):
@@ -42,7 +44,7 @@ post_delete.connect(cart_item_post_save_receiver, sender=CartItem)
 
 
 class Cart(models.Model):
-    user = models.ForeignKey(BasicUser, on_delete=models.PROTECT, null=True, blank=True, verbose_name=u"کاربر")
+    user = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True, verbose_name=u"کاربر")
     items = models.ManyToManyField(TourVariation, through=CartItem, verbose_name=u"محتویات")
     timestamp = models.DateTimeField(auto_now_add=True, verbose_name=u"زمانن ایجاد")
     updated = models.DateTimeField(auto_now=True, verbose_name=u"به‌روزرسانی شده در")

@@ -4,6 +4,7 @@ from decimal import Decimal
 from tours.models import Tour, TourVariation
 from accounts.models import BasicUser
 from django.db.models.signals import pre_save, post_save, post_delete
+from django.core.urlresolvers import reverse
 # Create your models here.
 User = settings.AUTH_USER_MODEL
 
@@ -22,6 +23,9 @@ class CartItem(models.Model):
 
     def __str__(self):
         return self.item.name
+
+    def remove(self):
+        return self.item.remove_from_cart()
 
 
 def cart_item_pre_save_receiver(sender, instance, *args, **kwargs):

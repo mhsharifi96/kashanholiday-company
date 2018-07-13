@@ -142,32 +142,29 @@ $(".variation_select").change(function(){
 
                             
                             <div class="col-sm-4 text-align" align="left">
+                                <form method="GET" action="{% url 'cart' %}">
                                     {% if object.tourvariation_set.count > 1 %}
-                                        <h4 id="price">{{ object.tourvariation_set.first.price }}</h4>
-                           
-                            <select class="form-control variation_select">
+                                    <h4 id="price">{{ object.tourvariation_set.first.price }}</h4>
+                                <select name="item" class="form-control variation_select">
 
-                                {% for vari_obj in object.tourvariation_set.all %}
+                                    {% for vari_obj in object.tourvariation_set.all %}
 
-                                <option data-sale-price="{{ vari_obj.sale_price }}" data-img="#" data-price="{{ vari_obj.price }}" value="{{ vari_obj.id }}">{{ vari_obj }}</option>
-
-                                {% endfor %}
-
-                            </select>
-
+                                    <option data-sale-price="{{ vari_obj.sale_price }}" data-img="#" data-price="{{ vari_obj.price }}" value="{{ vari_obj.id }}">{{ vari_obj }}</option>
+                                    {% endfor %}
+                                </select>
                             {% else %}
-
                                 <h4 id="price">{% if object.tourvariation_set.first.sale_price %}
                                         {{ object.tourvariation_set.first.sale_price }}
                                         <small class="org-price"> {{ object.tourvariation_set.first.price }} </small>
                                         {% else %}
+                                    <input type="hidden" name="item" value="object.tourvariation_set.first.id">
                                         {{ object.tourvariation_set.first.price }}
                                         {% endif %}
                                 </h4>
-
                             {% endif %}
                             <br>
-                            <a href="#">Add to Cart</a>
+                            <input type="submit" class="btn btn-dark" value="Add to Cart">
+                                </form>
                             <br>
                             <br>
                             <p>Share

@@ -86,7 +86,32 @@ $(".variation_select").change(function(){
     var img = $(".variation_select option:selected").attr("data-img");
     $("img").attr("src", img);
 
-})
+});
+
+//Ajax
+$("#submit-btn").click(function (event) {
+    event.preventDefault(); //prevent to do the default action witch is to submit
+    var formData = $("#add-form").serialize();
+    console.log(formData);
+    $.ajax({
+        type: "GET",
+        url: "{% url 'cart' %}",
+        data: formData,
+        success: function (data) {
+            // console.log(data);
+            $("#jquery-message").text("Added " + data.item_added + " Deleted " + data.deleted )
+        },
+
+        error: function (response, error) {
+            // console.log(response);
+            // console.log(error);
+            $("#add-form").submit()
+        },
+    })
+
+
+    // $("add-form").submit()
+});
 
 {% endblock %}
 </script>
@@ -157,7 +182,10 @@ $(".variation_select").change(function(){
 
 
                             <div class="col-sm-4 text-align" align="left">
-                                <form method="GET" action="{% url 'cart' %}">
+                                <form id="add-form" method="GET" action="{% url 'cart' %}">
+                                    <p id="jquery-message" class="lead">
+
+                                    </p>
                                     {% if object.tourvariation_set.count > 1 %}
                                     <h4 id="price">{{ object.tourvariation_set.first.price }}</h4>
                                 <select name="item" class="form-control variation_select">
@@ -181,8 +209,9 @@ $(".variation_select").change(function(){
                                     <br>
                                     <input class="form-control" type="number" name="qty" value="1">
                             <br>
-                            <input type="submit" class="btn btn-dark" value="Add to Cart">
-                                </form>
+                            <input id="submit-btn" type="submit" class="btn btn-dark" value="Add to Cart">
+                                    
+                    </form>
                             <br>
                             <br>
                             <p>Share

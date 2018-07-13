@@ -1,9 +1,40 @@
 {% extends "base.html" %}
 
+<script>
+    {% block jquery %}
+
+    {% endblock %}
+</script>
+
 {% block content %}
 
 {{ object }}
 
 {{ object.items.all }}
+
+<table class="table">
+
+{% for item in object.cartitem_set.all %}
+<tr>
+    <form action="." method="GET">
+        <td>
+            {{ item.item.get_title }}
+        </td>
+            <input type="hidden" name="item" value="{{ item.item.id }}">
+        <td>
+            <input type="number" class="item-qty" name="qty" value="{{ item.quantity }}">
+            <input type="submit" class="btn btn-link btn-update" style="display: none;" value="Update item">
+        </td>
+        <td>
+            {{ item.line_total }}
+        </td>
+        <td class="text-right"><a href="{{ item.remove }}">x</a>
+        </td>
+    </form>
+</tr>
+{% endfor %}
+
+</table>
+
 
 {% endblock content %}

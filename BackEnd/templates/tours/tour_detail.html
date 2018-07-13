@@ -152,16 +152,19 @@ $(".variation_select").change(function(){
                                     <option data-sale-price="{{ vari_obj.sale_price }}" data-img="#" data-price="{{ vari_obj.price }}" value="{{ vari_obj.id }}">{{ vari_obj }}</option>
                                     {% endfor %}
                                 </select>
+
                             {% else %}
                                 <h4 id="price">{% if object.tourvariation_set.first.sale_price %}
                                         {{ object.tourvariation_set.first.sale_price }}
                                         <small class="org-price"> {{ object.tourvariation_set.first.price }} </small>
                                         {% else %}
-                                    <input type="hidden" name="item" value="object.tourvariation_set.first.id">
+                                    <input type="hidden" name="item" value="{{ object.tourvariation_set.first.id }}">
                                         {{ object.tourvariation_set.first.price }}
                                         {% endif %}
                                 </h4>
                             {% endif %}
+                                    <br>
+                                    <input class="form-control" type="number" name="qty" value="1">
                             <br>
                             <input type="submit" class="btn btn-dark" value="Add to Cart">
                                 </form>

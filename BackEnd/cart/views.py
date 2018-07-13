@@ -37,7 +37,7 @@ class CartView(SingleObjectMixin, View):
             item_instance = get_object_or_404(TourVariation, id=item_id)
             qty = request.GET.get("qty", 1)
             try:
-                if qty < 1:
+                if int(qty) < 1:
                     delete_item = True
             except:
                 raise Http404

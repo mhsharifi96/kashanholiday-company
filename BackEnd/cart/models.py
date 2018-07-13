@@ -6,11 +6,17 @@ from django.db.models.signals import pre_save, post_save, post_delete
 # Create your models here.
 
 
+class CartItemHotel(models.Model):
+    cart = models.ForeignKey("Cart", on_delete=models.PROTECT, verbose_name=u"سبد خرید")
+    # item = models.ForeignKey("", verbose_name=u"")
+    quantity = models.PositiveIntegerField(default=1, verbose_name=u"تعداد")
+
+
 class CartItem(models.Model):
-    cart = models.ForeignKey("Cart")
-    item = models.ForeignKey(TourVariation, on_delete=models.PROTECT)
-    quantity = models.PositiveIntegerField(default=1)
-    line_item_total = models.DecimalField(max_digits=10, decimal_places=2)
+    cart = models.ForeignKey("Cart", on_delete=models.PROTECT, verbose_name=u"سبد خرید")
+    item = models.ForeignKey(TourVariation, on_delete=models.PROTECT, verbose_name=u"مورد")
+    quantity = models.PositiveIntegerField(default=1, verbose_name=u"تعداد")
+    line_item_total = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=u"")
 
     def __str__(self):
         return self.item.name

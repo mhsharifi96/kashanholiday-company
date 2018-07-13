@@ -78,6 +78,14 @@ class TourVariation(models.Model):
     def get_absolute_url(self):
         return self.tour.get_absolute_url()
 
+    def add_to_cart(self):
+        return "%s?item=%s&qty=1" % (reverse("cart"), self.id)
+
+    def remove_from_cart(self):
+        return "%s?item=%s&qty=1&delete=True" % (reverse("cart"), self.id)
+
+    def get_title(self):
+        return "%s - %s" % (self.product.title, self.title)
 
 
 def tour_post_save_receiver(sender, instance, created, *args, **kwargs):
@@ -89,7 +97,6 @@ def tour_post_save_receiver(sender, instance, created, *args, **kwargs):
         new_var.title = "Default"
         new_var.price = tour.price
         new_var.save()
-
 
 
 post_save.connect(tour_post_save_receiver, sender=Tour)

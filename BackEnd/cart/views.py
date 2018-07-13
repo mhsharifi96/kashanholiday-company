@@ -3,6 +3,8 @@ from django.views.generic.base import View
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from tours.models import TourVariation
+from django.urls import reverse
+from django.http import Http404
 from .models import CartItem, Cart
 
 # Create your views here.
@@ -33,18 +35,25 @@ class CartView(SingleObjectMixin, View):
         delete_item = request.GET.get("delete")
         if item_id:
             item_instance = get_object_or_404(TourVariation, id=item_id)
-            qty = request.GET.get("qty")
-            cart_item = CartItem.objects.get_or_create(cart=cart, item=item_instance)[0]
+            qty = request.GET.get("qty", 1)
+            try:
+                if int(qty) < 1:
+                    delete_item = True
+            except:
+                raise Http404
+
+            cart_item, created = CartItem.objects.get_or_create(cart=cart, item=item_instance)
+            if created:
+                flash_message = "Successfully added to the cart"
+                item_added = True
             if delete_item:
+                flash_message = "Item removed successfully."
                 cart_item.delete()
             else:
+                if not created:
+                    flash_message = "Quantity has been updated successfully."
                 cart_item.quantity = qty
                 cart_item.save()
-                print(cart_item, qty)
-        context = {
-            "object": self.get_object()
-        }
-        template = self.template_name
-
-        return render(request, template, context)
+            if not request.is_ajax():
+                return HttpResponseRedirect(reverse("cart"))
 

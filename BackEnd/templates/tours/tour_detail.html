@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kashan Holiday</title>
+    <link rel="Shortcut icon" href="{% static "img/logo.png"%}">
     <link rel="stylesheet" href="{% static "css/bootstrap.min.css"%}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,32 +24,46 @@
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md  bg-outline-light navbar-wrapper">
-    <div class="container-fluid">
-        <a href="#" class="navbar-brand"><img id="top-icon" src="./../img/photographer.png" style="width: 30px; height: 30px;" alt="logo"></a>
-        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbar-Responsive">
-            <span class="navbar-toggler-icon my-toggler "></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar-Responsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item ">
-                    <a href="#" class="nav-link">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Restuarant</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Hotel</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Tour</a>
-                </li>
-                <li class="nav-item act">
-                    <a href="#" class="nav-link">Home</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+<div class="container-fluid">
+		<a href="#" class="navbar-brand"><img id="top-icon" src="{% static "img/logo.png"%}" style="width: 30px; height: 30px;" alt="logo"></a>
+		<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbar-Responsive">
+			<span class="navbar-toggler-icon my-toggler "></span>
+		</button>
+		<li>
+			<a href="#"><i class="fas fa-shopping-cart navbar-cart"></i><span class="badge">0</span></a>
+		</li>
+		<duv class="collapse navbar-collapse" id="navbar-Responsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item act">
+					<a href="#" class="nav-link">
+						صفحه اصلی
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="{% url "tours:Tour_List"%}" class="nav-link">
+						تور
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="nav-link">
+						هتل
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="{% url 'restaurants:list' %}" class="nav-link">
+						رستوران
+					</a>
+				</li>
+				<li class="nav-item ">
+					<a href="{% url 'blog:list' %}" class="nav-link">
+						وبلاگ
+					</a>
+				</li>
+			</ul>
+		</div>
+</div>
 </nav>
+
 <script>
 {% block jquery %}
 
@@ -140,34 +155,34 @@ $(".variation_select").change(function(){
                             <br>
                             <br>
 
-                            
+
                             <div class="col-sm-4 text-align" align="left">
+                                <form method="GET" action="{% url 'cart' %}">
                                     {% if object.tourvariation_set.count > 1 %}
-                                        <h4 id="price">{{ object.tourvariation_set.first.price }}</h4>
-                           
-                            <select class="form-control variation_select">
+                                    <h4 id="price">{{ object.tourvariation_set.first.price }}</h4>
+                                <select name="item" class="form-control variation_select">
 
-                                {% for vari_obj in object.tourvariation_set.all %}
+                                    {% for vari_obj in object.tourvariation_set.all %}
 
-                                <option data-sale-price="{{ vari_obj.sale_price }}" data-img="#" data-price="{{ vari_obj.price }}" value="{{ vari_obj.id }}">{{ vari_obj }}</option>
-
-                                {% endfor %}
-
-                            </select>
+                                    <option data-sale-price="{{ vari_obj.sale_price }}" data-img="#" data-price="{{ vari_obj.price }}" value="{{ vari_obj.id }}">{{ vari_obj }}</option>
+                                    {% endfor %}
+                                </select>
 
                             {% else %}
-
                                 <h4 id="price">{% if object.tourvariation_set.first.sale_price %}
                                         {{ object.tourvariation_set.first.sale_price }}
                                         <small class="org-price"> {{ object.tourvariation_set.first.price }} </small>
                                         {% else %}
+                                    <input type="hidden" name="item" value="{{ object.tourvariation_set.first.id }}">
                                         {{ object.tourvariation_set.first.price }}
                                         {% endif %}
                                 </h4>
-
                             {% endif %}
+                                    <br>
+                                    <input class="form-control" type="number" name="qty" value="1">
                             <br>
-                            <a href="#">Add to Cart</a>
+                            <input type="submit" class="btn btn-dark" value="Add to Cart">
+                                </form>
                             <br>
                             <br>
                             <p>Share
@@ -201,13 +216,13 @@ $(".variation_select").change(function(){
                                 <td style="text-align: center;">INF NO-BED</td>
                                 <td style="text-align: center;">تعداد شب اقامت</td>
                             </tr>
-                            
+
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <br><br><br>
-                
+
                 {% if tour.note %}
                     <div class="vc_row wpb_row vc_row-fluid bcg"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner "><div class="wpb_wrapper">
                     <div class="wpb_text_column wpb_content_element ">
@@ -215,7 +230,7 @@ $(".variation_select").change(function(){
                             <h3 style="text-align: right"><span style="color: #000000;"><strong>:توضیحات</strong></span></h3>
                             <div>
                                 <p style="text-align: right"><span style="color: #000000;"><strong>{{tour.note}}</strong></span></p>
-                                
+
                             </div>
 
                         </div>
@@ -224,8 +239,8 @@ $(".variation_select").change(function(){
 
 
                 {% endif %}
-                    
-                
+
+
 
             </div>
         </div>
@@ -287,52 +302,57 @@ $(".variation_select").change(function(){
 {% endblock %}
 
 <!--- Footer -->
-<footer>
-    <div class="container" id="Footer">
-        <div class="row text-center">
-            <div class="col-md-4">
-                <img src="img/w3newbie.png" alt="">
-                <hr class="light">
-                <p>555-599-5956</p>
-                <p>jfgvs@hvis.com</p>
-                <p>kfha street jbhsj</p>
-                <p>city,uhacus</p>
-            </div>
-            <div class="col-md-4">
-                <hr class="light">
-                <h5>Our Hours</h5>
-                <hr class="light">
-                <p>555-599-5956</p>
-                <p>jfgvs@hvis.com</p>
-                <p>kfha street jbhsj</p>
+<footer id="myFooter">
+		<div class="container">
+		<div class="row">
+		<div class="col-sm-3">
+		<h5 style="text-align:center">کاشان هالیدی</h5>
+<ul style="text-align:center">
+<li><a href="#">درباره ما</a></li>
+		<li><a href="#">قوانین</a></li>
+		<li><a href="#">ارتباط با ما</a></li>
+		</ul>
+		</div>
+		<div class="col-sm-3">
+		<h5 style="text-align:center">خدمات مشتریان</h5>
+<ul style="text-align:center">
+<li><a href="#">سوالات متداول</a></li>
+		<li><a href="#">حریم شخصی کاربران</a></li>
+<li><a href="#">راهنمای رزرو</a></li>
+		</ul>
+		</div>
+		<div class="col-sm-3">
+		<h5 style="text-align:center">صفحات</h5>
+		<ul style="text-align:center">
+		<li><a href="#">تور ها</a></li>
+		<li><a href="#">هتل ها</a></li>
+		<li><a href="#">رستوران ها</a></li>
+		</ul>
+		</div>
+		<div class="col-sm-3">
+		<h5 style="text-align:center">همکاران ما</h5>
+		<ul style="text-align:center">
+		<li><a href="#">علی بابا</a></li>
+		<li><a href="#">گیتی سرور</a></li>
+		<li><a href="#">جاباما</a></li>
+		</ul>
+		</div>
+		</div>
 
-            </div>
-            <div class="col-md-4">
-                <hr class="light">
-                <h5>askcavsa</h5>
-                <hr class="light">
-                <p>fkjbejsfhlhl</p>
-                <p>jfgvs@hvis.com</p>
-                <p>kfha street jbhsj</p>
-                <p>city,uhacus</p>
-            </div>
-            <div class="col-md-12">
-                <hr class="light-100">
-                <h5>&copy; KashanHoliday.com</h5>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row text-center">
-                <div class="col-12 social">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
+
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26467.08839297249!2d51.408631924073745!3d33.982616536386814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f9684849edea239%3A0xaf87e360598c6612!2sKashan%2C+Isfahan+Province%2C+Iran!5e0!3m2!1sen!2s!4v1525879647210" width="1100" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+</div>
+<div class="social-networks">
+<a href="#"><i class="fab fa-facebook fa-4x"></i></a>
+<a href="#"><i class="fab fa-twitter fa-4x"></i></a>
+<a href="#"><i class="fab fa-google-plus-g fa-4x"></i></a>
+<a href="#"><i class="fab fa-instagram fa-4x"></i></a>
+<a href="#"><i class="fab fa-youtube fa-4x"></i></a>
+</div>
+<div class="footer-copyright">
+<p>© 2018 Copyright KashanHoliday </p>
+</div>
 </footer>
 
 
@@ -349,16 +369,3 @@ $(".variation_select").change(function(){
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-

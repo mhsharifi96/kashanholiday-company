@@ -8,6 +8,7 @@
 	<title>Kashan Holiday</title>
 	<link rel="Shortcut icon" href="{% static 'img/logo.png' %}">
 	{% comment %} <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> {% endcomment %}
+	<script src="{% static 'js/jquery3.3.1.js' %}"></script>
 	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
@@ -163,8 +164,8 @@
 							<i class="zmdi zmdi-search" style="color: black"></i>
 						</div>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
-							<i class="zmdi zmdi-shopping-cart" style="color: black"></i>
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="2">
+							<a href="{% url 'cart' %}"><i class="zmdi zmdi-shopping-cart" style="color: black"></i></a>
 						</div>
 
 						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
@@ -373,15 +374,10 @@
 			</div>
 		</div>
 	</div>
-	
-	{% block jquery %}
 
-	{% endblock jquery %}
-    
-
+	{% include 'snippets/css.html' %}
 
 	{% block slider %}
-
 
 
 	{% endblock slider %}
@@ -392,11 +388,17 @@
 
 	{% endblock mainpage %}
 
+	{% include 'snippets/nav.html' %}
+
+	{% block content %}
 
 
 
+	{% endblock content %}
 
 
+
+	{% include 'snippets/js.html' %}
 
 <!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">
@@ -575,4 +577,10 @@
 		{% endblock javascript %}
     </body>
     </html>
-    
+    <script>
+			$(document).ready(function(){
+				{% block jquery %}
+		
+				{% endblock %}
+			});
+		</script>

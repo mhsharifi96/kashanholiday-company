@@ -22,7 +22,7 @@ class CartItem(models.Model):
     line_item_total = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=u"قیمت")
 
     def __str__(self):
-        return self.item.name
+        return self.item.title
 
     def remove(self):
         return self.item.remove_from_cart()

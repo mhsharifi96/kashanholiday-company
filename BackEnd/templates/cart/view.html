@@ -3,40 +3,67 @@
 <script>
     {% block jquery %}
     $(".item-qty").change(function () {
-        $(this).next(".btn-update").fadeIn();
-    })
-    {% endblock %}
+        // $(this).next(".btn-update").fadeIn();
+        // event.preventDefault(); //prevent to do the default action witch is to submit
+        var item = $(this).prev("input[type='hidden']").val();
+        var qty = $(this).val();
+        var data = {
+            item: item,
+            qty: qty
+        };
+        console.log(data);
+        $.ajax({
+            type: "GET",
+            url: "{% url 'cart' %}",
+            data: data,
+            success: function (data) {
+                // console.log(data);
+                $("#jquery-message").text("Added " + data.item_added + " Deleted " + data.deleted);
+                if(data.deleted){
+                    $("#item-" + item).fadeOut();
+                } else{
+                    $("#item-line-total-" + item).text(data.line_total);
+                    $("#subtotal").text(data.subtotal);
+                }
+            },
+
+            error: function (response, error) {
+                // console.log(response);
+                // console.log(error);
+                $("#add-form").submit()
+            },
+        })
+
+    });
+    {% endblock jquery %}
 </script>
 
 {% block content %}
 
-{{ object }}
-
-{{ object.items.all }}
-
 <table class="table">
 
 {% for item in object.cartitem_set.all %}
-<tr>
-    <form action="." method="GET">
+<tr id="item-{{ item.item.id }}">
         <td>
             {{ item.item.get_title }}
         </td>
-            <input type="hidden" name="item" value="{{ item.item.id }}">
+
         <td>
-            <input type="number" class="item-qty" name="qty" value="{{ item.quantity }}">
-            <input type="submit" class="btn btn-link btn-update" style="display: none;" value="Update item">
+            <form action="." method="GET">
+                <input type="hidden" name="item" value="{{ item.item.id }}" />
+                <input type="number" class="item-qty" name="qty" value="{{ item.quantity }}" />
+                <input type="submit" class="btn btn-link btn-update" style="display: none;" value="Update item" />
+            </form>
         </td>
-        <td>
+        <td id="item-line-total-{{ item.item.id }}">
             {{ item.line_item_total }}
         </td>
         <td class="text-right"><a href="{{ item.remove }}">x</a>
         </td>
-    </form>
 </tr>
 {% endfor %}
 
-    <tr>
+    <tr id="subtotal">
         <td colspan="4" class="text-right">مجموع : {{ object.subtotal }}</td>
     </tr>
 

@@ -765,3 +765,7 @@ section h3.section-subheading {
   }
 }
 
+/* ******************************************************** */
+.wrap-menu-desktop{
+  direction: rtl;
+}

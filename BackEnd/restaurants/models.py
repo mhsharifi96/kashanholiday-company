@@ -37,8 +37,11 @@ class RestaurantLocationManager(models.Manager):
 
 class RestaurantLocation(models.Model):
     owner = models.ForeignKey(User, verbose_name=u'صاحب امتیاز')
+    
     name = models.CharField(max_length=120, verbose_name=u'نام رستوران')
+    description = models.TextField(blank=True, verbose_name=u'توضیحات رستوران')
     location = models.CharField(max_length=120, null=True, blank=True, verbose_name=u'مکان')
+    image = models.ImageField(upload_to='Hotels/%Y/%m/%d', blank=True)
     category = models.CharField(max_length=120, null=True, blank=True, validators=[validate_category], verbose_name=u'دسته بندی')
     timestamp = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

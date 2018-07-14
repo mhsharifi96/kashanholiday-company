@@ -2,54 +2,7 @@
 {% load staticfiles %}
 
 <script>
-<<<<<<< HEAD
-	//{% block jquery %}
-		// $(".item-qty").change(function () {
-		// 	// $(this).next(".btn-update").fadeIn();
-		// 	// event.preventDefault(); //prevent to do the default action witch is to submit
-		// 	var item = $(this).prev("input[type='hidden']").val();
-		// 	var qty = $(this).val();
-		// 	var data = {
-		// 		item: item,
-		// 		qty: qty
-		// 	};
-		// 	// console.log(data);
-		// 	$.ajax({
-		// 		type: "GET",
-		// 		url: "{% url 'cart' %}",
-		// 		data: data,
-		// 		success: function (data) {
-		// 			// console.log(data);
-		// 			$("#jquery-message").text("Added " + data.item_added + " Deleted " + data.deleted);
-		// 			if(data.deleted){
-		// 				$("#item-" + item).fadeOut();
-		// 				$("#subtotal").text(data.subtotal);
-		// 				$("#taxtotal").text(data.tax_total);
-		// 				$("#carttotal").text(data.cart_total);
-		// 			} else{
-		// 				$("#item-line-total-" + item).text(data.line_total);
-		// 				$("#subtotal").text(data.subtotal);
-		// 				$("#taxtotal").text(data.tax_total);
-		// 				$("#carttotal").text(data.cart_total);
-		// 			}
-		// 			if (data.total_items == 0){
-		// 				$(".table").fadeOut();
-		// 				// $(".main-content").text("!!!سبد خرید شما خالی است")
-		// 				var template = "{% include 'cart/empty_shopping_cart.html' %}"
-		// 				$(".main-content").html(template)
-		// 			}
-		// 			var message = "";
-		// 			if (data.item_added){
-		// 				message = "!محصول جدید اضافه شد";
-		// 			} else if (data.deleted){
-		// 				message = "!محصول از سبد خرید حذف شد";
-		// 			} else {
-		// 				message = "!محصول در سبد خرید به روزرسانی شد";
-		// 			}
-		// 			showFlashMessage(message);
-		// 			updateCartItemBadge();
-		// 		},
-=======
+
 	{% block jquery %}
 		$(".item-qty").change(function () {
 			// $(this).next(".btn-update").fadeIn();
@@ -96,7 +49,6 @@
 					showFlashMessage(message);
 					updateCartItemBadge();
 				},
->>>>>>> a7400910936d30fab951169e101ad37c99afdd32
 	
 				error: function (response, error) {
 					// console.log(response);
@@ -105,13 +57,8 @@
 				},
 			})
 	
-<<<<<<< HEAD
 		// });
 	//{% endblock jquery %}
-=======
-		});
-	{% endblock jquery %}
->>>>>>> a7400910936d30fab951169e101ad37c99afdd32
 </script>
 
 {% block content %}

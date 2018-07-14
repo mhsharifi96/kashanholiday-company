@@ -28,15 +28,17 @@
                 }
                 if (data.total_items == 0){
                     $(".table").fadeOut();
-
+                    // $(".main-content").text("!!!سبد خرید شما خالی است")
+                    var template = "{% include 'cart/empty_shopping_cart.html' %}"
+                    $(".main-content").html(template)
                 }
                 var message = "";
                 if (data.item_added){
-                    message = "محصول جدید اضافه شد";
+                    message = "!محصول جدید اضافه شد";
                 } else if (data.deleted){
-                    message = "محصول از سبد خرید حذف شد";
+                    message = "!محصول از سبد خرید حذف شد";
                 } else {
-                    message = "محصول در سبد خرید به روزرسانی شد";
+                    message = "!محصول در سبد خرید به روزرسانی شد";
                 }
                 showFlashMessage(message);
             },
@@ -60,14 +62,12 @@
     <strong>Warning!</strong> سلام به همگی!!!.
 </div>
 
-<div class="row">
-    
+<div class="row main-content">
+
 </div>
 {% if object.cartitem_set.count < 1 %}
 
-    <div class="col-sm-6 col-sm-offset-3 text-center">
-        <h2>!!!سبد خرید شما خالی است</h2>
-    </div>
+{% include "cart/empty_shopping_cart.html" %}
 
 {% else %}
 <table class="table">
@@ -99,6 +99,7 @@
 
 </table>
 {% endif %}
+</div>
 
 
 {% endblock content %}

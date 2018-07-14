@@ -27,7 +27,8 @@ class Hotel(models.Model):
 
 
     def get_absolute_url(self):
-        pass
+        # return f"/restaurants/{self.slug}"
+        return reverse('hotels:hotel_detail', kwargs={'slug': self.slug})
 
     class Meta:
         ordering = ["-timestamp"]

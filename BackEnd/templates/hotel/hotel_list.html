@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>:)))</title>
+</head>
+<body>
+    {% for rest in  object_list%}
+    {{rest.name|linebreaks}}
+    {{rest.location|linebreaks}}
+    slug:{{rest.slug}}
+    {% empty %}
+    <li>No restaurants yet.</li>
+    {%endfor%}
+</body>
+</html>

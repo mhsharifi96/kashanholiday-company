@@ -16,6 +16,7 @@ class AvailableTourManger(models.Manager):
 class Hotel(models.Model):
     owner = models.ForeignKey(User, on_delete=models.PROTECT)
     name = models.CharField(max_length=120, verbose_name=u'نام هتل', null=False, blank=True, default=u'امیرکبیر')
+    description = models.TextField(blank=True, verbose_name=u'توضیحات رستوران')
     slug = models.SlugField(null=False, blank=True, unique=True)
     image = models.ImageField(upload_to='Hotels/%Y/%m/%d', blank=True)
     description = models.TextField(null=False, blank=True, default='Welcome')
@@ -28,7 +29,7 @@ class Hotel(models.Model):
 
     def get_absolute_url(self):
         # return f"/restaurants/{self.slug}"
-        return reverse('hotels:hotel_detail', kwargs={'slug': self.slug})
+        return reverse('hotel:hotel_detail', kwargs={'slug': self.slug})
 
     class Meta:
         ordering = ["-timestamp"]

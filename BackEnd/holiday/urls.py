@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
-from cart.views import CartView
+from cart.views import CartView, CartBadgeCountView
 from attractions.views import ContactView, AboutView, Index_Page
 from django.conf import settings
 from django.conf.urls.static import static
@@ -36,6 +36,7 @@ urlpatterns = [
     url(r'^tours/categories', include('tours.urls_categories', namespace='categories')),
     url(r'^cart/$', CartView.as_view(), name='cart'),
     url(r'^blog/posts/', include("blog.urls", namespace="blog")),
+    url(r'^cart/count/$', CartBadgeCountView.as_view(), name='cart_badge'),
 ]
 
 if settings.DEBUG:

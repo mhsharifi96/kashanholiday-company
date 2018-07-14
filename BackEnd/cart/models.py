@@ -54,6 +54,10 @@ class Cart(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True, verbose_name=u"زمانن ایجاد")
     updated = models.DateTimeField(auto_now=True, verbose_name=u"به‌روزرسانی شده در")
     subtotal = models.DecimalField(max_digits=50, default=100.00, verbose_name=u'مجموع', decimal_places=2)
+    tax_total = models.DecimalField(max_digits=50, default=100.00, verbose_name=u'مجموع مالیات', decimal_places=2)
+    tax_percentage = models.DecimalField(max_digits=10, decimal_places=5, default=0.01, verbose_name=u'درصد مالیات')
+    total = models.DecimalField(max_digits=50, default=100.00, verbose_name=u'جمع کل', decimal_places=2)
+    # discounts
 
     class Meta:
         verbose_name = u'سبد خرید'
@@ -72,5 +76,13 @@ class Cart(models.Model):
         self.save()
 
 
+def calculate_tax_total_price_receiver(sender, instance, *args, **kwargs):
+    subtotal = Decimal(instance.subtotal)
+    tax_total = round(subtotal * Decimal(instance.tax_percentage), 2) # ده درصد مالیات برارزش افزوده
+    total = round(subtotal + Decimal(tax_total), 2)
+    instance.tax_total = "%.2f" %(tax_total)
+    instance.total = "%.2f" %(total)
 
+
+pre_save.connect(calculate_tax_total_price_receiver, sender=Cart)
 

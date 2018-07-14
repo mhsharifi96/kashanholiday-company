@@ -1,4 +1,5 @@
-{% extends "base.html" %}
+{% extends "base-main.html" %}
+{% load staticfiles %}
 
 <script>
     {% block jquery %}
@@ -18,13 +19,17 @@
             data: data,
             success: function (data) {
                 // console.log(data);
-                // $("#jquery-message").text("Added " + data.item_added + " Deleted " + data.deleted);
+                $("#jquery-message").text("Added " + data.item_added + " Deleted " + data.deleted);
                 if(data.deleted){
                     $("#item-" + item).fadeOut();
-                    $("#subtotal").text("مجموع : " + data.subtotal);
+                    $("#subtotal").text(data.subtotal);
+                    $("#taxtotal").text(data.tax_total);
+                    $("#carttotal").text(data.cart_total);
                 } else{
                     $("#item-line-total-" + item).text(data.line_total);
-                    $("#subtotal").text("مجموع : " + data.subtotal);
+                    $("#subtotal").text(data.subtotal);
+                    $("#taxtotal").text(data.tax_total);
+                    $("#carttotal").text(data.cart_total);
                 }
                 if (data.total_items == 0){
                     $(".table").fadeOut();
@@ -41,6 +46,7 @@
                     message = "!محصول در سبد خرید به روزرسانی شد";
                 }
                 showFlashMessage(message);
+                updateCartItemBadge();
             },
 
             error: function (response, error) {
@@ -93,8 +99,16 @@
 </tr>
 {% endfor %}
 
-    <tr id="subtotal">
-        <td colspan="4" class="text-right">مجموع : {{ object.subtotal }}</td>
+    <tr>
+        <td colspan="4" class="text-left">مجموع : <span id='subtotal'>{{ object.subtotal }}</span></td>
+    </tr>
+
+    <tr>
+        <td colspan="4" class="text-left">مالیات : <span id="taxtotal">{{ object.tax_total }}</span></td>
+    </tr>
+
+    <tr>
+        <td colspan="4" class="text-left">جمع کل : <span id="carttotal">{{ object.total }}</span></td>
     </tr>
 
 </table>
@@ -104,3 +118,4 @@
 
 {% endblock content %}
 
+<script src="{% static 'cozastore/js/main.js' %}"></script>

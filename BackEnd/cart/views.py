@@ -1,4 +1,4 @@
-from django.views.generic.detail import SingleObjectMixin
+from django.views.generic.detail import SingleObjectMixin, DetailView
 from django.views.generic.base import View
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, get_object_or_404
@@ -117,3 +117,11 @@ class CartView(SingleObjectMixin, View):
         }
         template = self.template_name
         return render(request, template, context)
+
+
+class CartView2(CartView):
+    template_name = "cart/shopping-cart.html"
+
+
+class CartCheckoutView(DetailView):
+    model = Cart

@@ -130,12 +130,12 @@
 	{% for tour in tours %}
 	<div class="col-md-4 col-sm-6 portfolio-item">
 		<a class="portfolio-link" href="{{ tour.get_absolute_url }}">
-		<img class="img-fluid" src="{% if tour.image %}{{tour.image.url}}{%else%}{% static "img/1.jpg" %}{%endif%}" alt="{{tour.name}}">
+		<img class="img-fluid" src="{% if tour.image %}{{tour.image.url}}{%else%}{% static 'img/1.jpg' %}{%endif%}" alt="{{tour.name}}">
 		</a>
 
 		<div class="portfolio-caption">
-		<a href="{{ tour.get_absolute_url }}"><h4>{{tour.name}}</h4></a>
-		<p>{{tour.description |truncatewords:5|linebreaks}}</p>
+		<a href="{{ tour.get_absolute_url }}"><h4>{{ tour.name }}</h4></a>
+		<p>{{ tour.description |truncatewords:5|linebreaks }}</p>
 		</div>
 	</div>
 
@@ -185,10 +185,10 @@
 		{% for hotel in hotels %}
 		<div class="col-xs-12 col-sm-6 col-md-4">
 				<div class="card">
-					<img src="{% if hotel.image%}{{hotel.image.url}}{%else%}{% static "img/Camel-riding-Maranjab-Desert.jpg" %}{%endif%}" alt="{{hotel.name}}" class="card-img-top">
+					<img src="{% if hotel.image%}{{hotel.image.url}}{%else%}{% static 'img/Camel-riding-Maranjab-Desert.jpg' %}{%endif%}" alt="{{hotel.name}}" class="card-img-top">
 					<div class="card-body">
 						<h4 class="card-title">{{hotel.name}}</h4>
-						<p class="card-text">{{hotel.description|truncatewords:8|linebreaks}}</p>
+						<p class="card-text">{{ hotel.description|truncatewords:8|linebreaks }}</p>
 						<a href="#" class="btn btn-outline-secondary">See {{hotel.name}}</a>
 					</div>
 				</div>

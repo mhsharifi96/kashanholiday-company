@@ -375,7 +375,7 @@
 		</div>
 	</div>
 
-	{% include 'snippets/css.html' %}
+	<!-- {% include 'snippets/css.html' %} -->
 
 	{% block slider %}
 
@@ -388,7 +388,7 @@
 
 	{% endblock mainpage %}
 
-	{% include 'snippets/nav.html' %}
+	<!-- {% include 'snippets/nav.html' %} -->
 
 	{% block content %}
 
@@ -398,7 +398,7 @@
 
 
 
-	{% include 'snippets/js.html' %}
+	<!-- {% include 'snippets/js.html' %} -->
 
 <!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">
@@ -514,7 +514,7 @@
     <!--===============================================================================================-->
         <script src="{% static 'cozastore/vendor/isotope/isotope.pkgd.min.js' %}"></script>
     <!--===============================================================================================-->
-        <script src="vendor/sweetalert/sweetalert.min.js"></script>
+        <script src="{% static 'cozastore/vendor/sweetalert/sweetalert.min.js' %}"></script>
         <script>
             $('.js-addwish-b2').on('click', function(e){
                 e.preventDefault();

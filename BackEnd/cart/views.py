@@ -120,7 +120,7 @@ class CartView(SingleObjectMixin, View):
 
 
 class CartView2(CartView):
-    template_name = "cart/shopping-cart.html"
+    template_name = "cart/shoping-cart.html"
 
 
 class CartCheckoutView(DetailView):

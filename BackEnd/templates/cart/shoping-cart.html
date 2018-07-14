@@ -2,7 +2,6 @@
 {% load staticfiles %}
 
 <script>
-
 	{% block jquery %}
 		$(".item-qty").change(function () {
 			// $(this).next(".btn-update").fadeIn();
@@ -57,8 +56,8 @@
 				},
 			})
 	
-		// });
-	//{% endblock jquery %}
+		});
+	{% endblock jquery %}
 </script>
 
 {% block content %}
@@ -67,7 +66,7 @@
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
 		</button>
-		<strong>Warning!</strong> سلام به همگی!!!.
+		<strong></strong> سلام به همگی!!!.
 	</div>
 	<!-- breadcrumb -->
 	<div class="container">
@@ -91,63 +90,57 @@
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
 						<div class="wrap-table-shopping-cart">
+							{% if object.cartitem_set.count < 1 %}
+
+								{% include "cart/empty_shopping_cart.html" %}
+
+							{% else %}
 							<table class="table-shopping-cart">
 								<tr class="table_head">
-									<th class="column-1">محصول</th>
+									<th class="column-1 text-center">محصول</th>
 									<th class="column-2"></th>
-									<th class="column-3">قیمت</th>
-									<th class="column-4">تعداد</th>
-									<th class="column-5">جمع</th>
+									<th class="column-3 text-center">قیمت</th>
+									<th class="column-4 text-center">تعداد</th>
+									<th class="column-5 text-center">جمع</th>
 								</tr>
 
-								<tr class="table_row">
+								{% for item in object.cartitem_set.all %}
+								<tr id="item-{{ item.item.id }}" class="table_row">
 									<td class="column-1">
 										<div class="how-itemcart1">
 											<img src="{% static 'cozastore/images/item-cart-04.jpg' %}" alt="IMG">
 										</div>
 									</td>
-									<td class="column-2">تور دور اروپا</td>
-									<td class="column-3">$ 36.00</td>
+									<td class="column-2 text-left">{{ item.item.get_title }}</td>
+									<td class="column-3 txt-center">$ 36.00</td>
 									<td class="column-4">
+										<!-- <form action="." method="GET"> -->
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
 											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
+											<form action="." method="GET"></form>
 
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="1">
+												<!-- <input type="hidden" name="item" value="{{ item.item.id }}" /> -->
+												<input class="mtext-104 cl3 txt-center num-product item-qty" type="number" name="qty" value="{{ item.quantity }}">
+												<!-- <span></span><input type="submit" class="btn btn-link btn-update" style="display: none;" value="Update item" /> -->
 
+											</form>
 											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
 										</div>
+										<!-- </form> -->
 									</td>
-									<td class="column-5">$ 36.00</td>
+									<td id="item-line-total-{{ item.item.id }}" class="column-5 text-center">
+											{{ item.line_item_total }}
+									</td>
 								</tr>
-
-								<tr class="table_row">
-									<td class="column-1">
-										<div class="how-itemcart1">
-											<img src="{% static 'cozastore/images/item-cart-05.jpg' %}" alt="IMG">
-										</div>
-									</td>
-									<td class="column-2">تور درو آسیا</td>
-									<td class="column-3">$ 16.00</td>
-									<td class="column-4">
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
-
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="1">
-
-											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
-									</td>
-									<td class="column-5">$ 16.00</td>
-								</tr>
+								{% endfor %}
+							
 							</table>
+						
+							{% endif %}
 						</div>
 
 						<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
@@ -169,19 +162,19 @@
 				<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
 					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
 						<h4 class="mtext-109 cl2 p-b-30">
-							Cart Totals
+							<p style="color: black; font-family: Arial, Helvetica, sans-serif; font-size: 23px;"><b>صورت حساب</b></p>
 						</h4>
 
 						<div class="flex-w flex-t bor12 p-b-13">
 							<div class="size-208">
-								<span class="stext-110 cl2">
-									Subtotal:
+								<span class="stext-110 cl2" style="color: black">
+									<b><p style="color: black; font-size: 17px">مجموع :</p></b>
 								</span>
 							</div>
 
 							<div class="size-209">
 								<span class="mtext-110 cl2">
-									$79.65
+										<b><p style="color: black; font-size: 17px"><span id='subtotal'>{{ object.subtotal }}</span></p></b>
 								</span>
 							</div>
 						</div>
@@ -232,14 +225,16 @@
 
 						<div class="flex-w flex-t p-t-27 p-b-33">
 							<div class="size-208">
-								<span class="mtext-101 cl2">
-									Total:
+								<span class="mtext-101 c12 text-left">
+										<b><p style="color: black; font-size: 20px; font-family: Arial, Helvetica, sans-serif">جمع کل : </p></b>
 								</span>
 							</div>
 
 							<div class="size-209 p-t-1">
-								<span class="mtext-110 cl2">
-									$79.65
+								<span class="mtext-110 cl2" style="color: black">
+										<b><p style="color: black; font-size: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+											<span id="carttotal">{{ object.total }}</span>
+										</p></b>
 								</span>
 							</div>
 						</div>
@@ -264,7 +259,7 @@
 {% endblock content %}
 
 {% block javascript %}
-
+<script src="{% static 'cozastore/js/main.js' %}"></script>
 <!--===============================================================================================-->	
 <script src="{% static 'cozastore/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
 <!--===============================================================================================-->

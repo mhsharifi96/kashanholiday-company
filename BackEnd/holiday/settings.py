@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Third Party Apps
     'taggit',
+    'crispy_forms',
+    # 'django_filters',
+    'registration',
 
     # my_Apps
     'restaurants',
@@ -48,6 +51,7 @@ INSTALLED_APPS = [
     'hotel',
     'accounts',
     'cart',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +143,19 @@ STATICFILES_DIRS = [
     ]
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
+
+#Crispy FORM TAGs SETTINGS
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+
+#DJANGO REGISTRATION REDUX SETTINGS
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+
+#Braintree Payments Details
+BRAINTREE_PUBLIC = "qn3p5n7njksw47r3"
+BRAINTREE_PRIVATE = "d14ac944794c0df1c81991ecf49221ff"
+BRAINTREE_MERCHANT_ID = "n84nynknvzz3j3sz"
+BRAINTREE_ENVIRONEMNT = "Sandbox"

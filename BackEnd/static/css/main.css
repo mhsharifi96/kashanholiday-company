@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+@font-face {
+  font-family: 'yekan';
+  src: url(../fonts/iranyekanwebregular.woff) format("woff");
+}
 html,
 body {
   height: 100%;
   width: 100%;
-  font-family: 'Poppins', sans-serif;
+  font-family: yekan  ;
   color: #222;
   background-color: #fbfbfb;
   text-align: right;
@@ -765,3 +769,7 @@ section h3.section-subheading {
   }
 }
 
+/* ******************************************************** */
+.wrap-menu-desktop{
+  direction: rtl;
+}

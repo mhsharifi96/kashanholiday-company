@@ -97,7 +97,7 @@
 							FA
 						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<a href="http://www.tgju.org/currency-exchange" class="flex-c-m trans-04 p-lr-25">
 							IR RIALS
 						</a>
 					</div>
@@ -108,9 +108,6 @@
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
-					<a href="{% url 'home' %}" class="logo">
-						<img src="{% static 'cozastore/images/icons/kashan-holiday.png' %}" alt="IMG-LOGO" style="width: 133px; height: 130px;">
-					</a>
 
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
@@ -164,7 +161,7 @@
 							<i class="zmdi zmdi-search" style="color: black"></i>
 						</div>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti cart-count-badge" data-notify="3">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti cart-count-badge" data-notify="{{ request.session.cart_item_count }}">
 							<a href="{% url 'cart' %}"><i class="zmdi zmdi-shopping-cart" style="color: black"></i></a>
 						</div>
 
@@ -172,6 +169,10 @@
 							<i class="zmdi zmdi-favorite-outline" style="color: black"></i>
 						</a>
 					</div>
+
+					<a href="{% url 'home' %}" class="logo">
+						<img src="../static/img/logo.png" class="logo">
+					</a>
 				</nav>
 			</div>
 		</div>
@@ -227,10 +228,10 @@
 						</a>
 
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							EN
+							FA
 						</a>
 
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
+						<a href="http://www.tgju.org/currency-exchange" class="flex-c-m p-lr-10 trans-04">
 							USD
 						</a>
 					</div>
@@ -444,7 +445,11 @@
 			</div>
 			</div>
 			
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26467.08839297249!2d51.408631924073745!3d33.982616536386814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f9684849edea239%3A0xaf87e360598c6612!2sKashan%2C+Isfahan+Province%2C+Iran!5e0!3m2!1sen!2s!4v1525879647210" width="1100" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+			<div class="col-9 col-offset-3 col-centered">
+				<div class="embed-responsive embed-responsive-21by9 ">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26467.08839297249!2d51.408631924073745!3d33.982616536386814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f9684849edea239%3A0xaf87e360598c6612!2sKashan%2C+Isfahan+Province%2C+Iran!5e0!3m2!1sen!2s!4v1525879647210"  frameborder="0" style="border:0" allowfullscreen></iframe>
+				</div>
+			</div>
 	
 		</div>
 		<div class="social-networks">
@@ -598,7 +603,7 @@
 	// badge.notify = '10';
 	// console.log($('.cart-count-badge').data('notify'))
 	// $('.cart-count-badge').data('notify', 10);
-	$(document).ready(function(){
+	function updateCartItemBadge(){
 		var badge = $('.cart-count-badge').attr("notify");
 		// $('.cart-count-badge').attr("data-notify", "10");
 
@@ -618,5 +623,9 @@
 				console.log(error);
 			}
 		})
+	}
+	$(document).ready(function(){
+		updateCartItemBadge();
+
 	})
 </script>

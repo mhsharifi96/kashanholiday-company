@@ -108,6 +108,7 @@ $("#submit-btn").click(function (event) {
             // $("#jquery-message").text("Added " + data.item_added + " Deleted " + data.deleted );
             // showFlashMessage("پیامی برای نمونه");
             showFlashMessage(data.flash_message);
+            updateCartItemBadge();
         },
         error: function (response, error) {
             // console.log(response);

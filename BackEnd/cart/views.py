@@ -25,9 +25,9 @@ class CartBadgeCountView(View):
 			raise Http404
 
 
-class CartView(SingleObjectMixin, View):
+class CartView2(SingleObjectMixin, View):
     model = Cart
-    template_name = "cart/view.html"
+    template_name = "cart/shoping-cart.html"
 
     def get_object(self, *args, **kwargs):
         self.request.session.set_expiry(0)
@@ -119,8 +119,9 @@ class CartView(SingleObjectMixin, View):
         return render(request, template, context)
 
 
-class CartView2(CartView):
-    template_name = "cart/shoping-cart.html"
+class CartView(CartView2):
+    model = Cart
+    # template_name = "cart/shoping-cart.html"
 
 
 class CartCheckoutView(DetailView):

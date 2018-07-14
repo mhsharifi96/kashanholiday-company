@@ -19,9 +19,9 @@ from .views import HotelDetailView,HotelListView
 
 app_name = 'hotels'
 urlpatterns = [
-  
+    url(r'$', HotelListView.as_view(), name='hotel_list'),   
     url('(?P<slug>[\w-]+)/', HotelDetailView.as_view(), name='hotel_detail'),
-    url(r'$', HotelDetailView.as_view(), name='hotel_list'),   
+    
     
 
 ]

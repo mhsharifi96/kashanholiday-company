@@ -465,6 +465,55 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="{% static 'cozastore/js/main.js' %}"></script>
+	
 
 </body>
 </html>
+<script>
+		$(document).ready(function(){
+			{% block jquery %}
+	
+			{% endblock %}
+		});
+</script>
+<script src="{%static 'js/main.js' %}"></script>
+<script>
+		// 	$('.cart-count-badge').notify({
+		// 	// options
+		// 	title: 'Bootstrap notify',
+		// 	message: 'Hello World' 
+		// },{
+		// 	// settings
+		// 	type: 'danger'
+		// });
+			console.log($('.cart-count-badge').attr('data-notify'))
+			// var badge = $('.cart-count-badge').data();
+			// badge.notify = '10';
+			// console.log($('.cart-count-badge').data('notify'))
+			// $('.cart-count-badge').data('notify', 10);
+			function updateCartItemBadge(){
+				var badge = $('.cart-count-badge').attr("notify");
+				// $('.cart-count-badge').attr("data-notify", "10");
+		
+				$.ajax({
+					type: "GET",
+					url: "{% url 'cart_badge' %}",
+					success: function(data){
+						// badge.text(data.count);
+						// $('#mydiv').data('myval',20);
+						$('.cart-count-badge').attr("data-notify", data.count);
+						// console.log($('.cart-count-badge').data('notify'))
+						// $('.cart-count-badge').attr('notify', "10");
+		
+					},
+					error: function(response, error){
+						console.log(response);
+						console.log(error);
+					}
+				})
+			}
+			$(document).ready(function(){
+				updateCartItemBadge();
+		
+			})
+</script>

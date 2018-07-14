@@ -112,7 +112,7 @@
 										</div>
 									</td>
 									<td class="column-2 text-left">{{ item.item.get_title }}</td>
-									<td class="column-3 txt-center">$ 36.00</td>
+									<td class="column-3 txt-center">{{ item.item.get_price }}</td>
 									<td class="column-4">
 										<!-- <form action="." method="GET"> -->
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
@@ -121,7 +121,8 @@
 											</div>
 											<form action="." method="GET"></form>
 
-												<!-- <input type="hidden" name="item" value="{{ item.item.id }}" /> -->
+												<input type="hidden" name="item" value="{{ item.item.id }}" />
+												
 												<input class="mtext-104 cl3 txt-center num-product item-qty" type="number" name="qty" value="{{ item.quantity }}">
 												<!-- <span></span><input type="submit" class="btn btn-link btn-update" style="display: none;" value="Update item" /> -->
 

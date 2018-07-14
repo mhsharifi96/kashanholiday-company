@@ -23,15 +23,19 @@ class TourModelTest(TestCase):
     def setUp(self):
         self.user = get_user_model().objects.create(username='')
     
-    #TODO:tours_tourvariation.sale_price
+    
     # def test_one_Tour(self):
-    #     Tour.objects.create(name='1-name', slug='1-slug', description='this is test ,its mean description' ,price=121.3)
+    #     Tour.objects.create(name='1-name', slug='1-slug', description='this is test ' ,price=121.35)
     #     response = self.client.get('/')
     #     self.assertContains(response, '1-name')
-    #     #self.assertContains(response, '1-slug')
-    #     #self.assertContains(response, 'this is test ,its mean description')
-    #     #self.assertContains(response, 121.3)
+    #     self.assertContains(response, '1-slug')
+    #     self.assertContains(response, 'this is test')
+    #     self.assertContains(response, 121.35)
     
+    def test_get_absolute_url(self):
+        #user = get_user_model().objects.create(username='some_user')
+        tour = Tour.objects.create(name="My tour")
+        self.assertIsNotNone(entry.get_absolute_url())
 
 
 

@@ -97,7 +97,7 @@
 							FA
 						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<a href="http://www.tgju.org/currency-exchange" class="flex-c-m trans-04 p-lr-25">
 							IR RIALS
 						</a>
 					</div>
@@ -161,7 +161,7 @@
 							<i class="zmdi zmdi-search" style="color: black"></i>
 						</div>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti cart-count-badge" data-notify="3">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti cart-count-badge" data-notify="{{ request.session.cart_item_count }}">
 							<a href="{% url 'cart' %}"><i class="zmdi zmdi-shopping-cart" style="color: black"></i></a>
 						</div>
 
@@ -228,10 +228,10 @@
 						</a>
 
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							EN
+							FA
 						</a>
 
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
+						<a href="http://www.tgju.org/currency-exchange" class="flex-c-m p-lr-10 trans-04">
 							USD
 						</a>
 					</div>
@@ -603,7 +603,7 @@
 	// badge.notify = '10';
 	// console.log($('.cart-count-badge').data('notify'))
 	// $('.cart-count-badge').data('notify', 10);
-	$(document).ready(function(){
+	function updateCartItemBadge(){
 		var badge = $('.cart-count-badge').attr("notify");
 		// $('.cart-count-badge').attr("data-notify", "10");
 
@@ -623,5 +623,9 @@
 				console.log(error);
 			}
 		})
+	}
+	$(document).ready(function(){
+		updateCartItemBadge();
+
 	})
 </script>

@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^$', Index_Page, name='home'),
     # url(r'^about/$', TemplateView.as_view(template_name='about.html'), name='about'),
     url(r'^restaurants/', include('restaurants.urls', namespace='restaurants')),
-    url(r'^hotels/', include('hotel.urls', namespace='hotels')),
+    url(r'^hotel/', include('hotel.urls', namespace='hotel')),
     # url(r'^restaurants/create/$', RestaurantCreateView.as_view(), name='restaurants-create'),
     # url(r'^restaurants/$', RestaurantListView.as_view(), name='restaurants-list'),
     # url(r'^restaurants/(?P<pk>\w+)/$', RestaurantDetailView.as_view(), name='restaurant-detail'),

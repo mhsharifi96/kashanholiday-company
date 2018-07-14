@@ -7,7 +7,9 @@
 			// $(this).next(".btn-update").fadeIn();
 			// event.preventDefault(); //prevent to do the default action witch is to submit
 			var item = $(this).prev("input[type='hidden']").val();
+			// console.log(item);
 			var qty = $(this).val();
+			// console.log(qty);
 			var data = {
 				item: item,
 				qty: qty
@@ -72,12 +74,12 @@
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
 			<a href="{% url 'home' %}" class="stext-109 cl8 hov-cl1 trans-04">
-				Home
+				<b>صفحه اصلی</b>
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
 			<span class="stext-109 cl4" style="color: black">
-				Shoping Cart
+				<b>سبد خرید</b>
 			</span>
 		</div>
 	</div>
@@ -109,29 +111,32 @@
 									<td class="column-1">
 										<div class="how-itemcart1">
 											<img src="{% static 'cozastore/images/item-cart-04.jpg' %}" alt="IMG">
+											<!-- <img src="url('{% static "{{ ')" alt="IMG"> -->
+											<!-- <p>{{ item.item.tour.image }}</p> -->
 										</div>
 									</td>
 									<td class="column-2 text-left">{{ item.item.get_title }}</td>
 									<td class="column-3 txt-center">{{ item.item.get_price }}</td>
 									<td class="column-4">
-										<!-- <form action="." method="GET"> -->
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
+									<form action="." method="GET">
+										<!-- <div class="wrap-num-product flex-w m-l-auto m-r-0"> -->
+											<input type="hidden" name="item" value="{{ item.item.id }}" />
+
+										<!-- <div class="wrap-num-product flex-w m-l-auto m-r-0"></div>
 											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
-											<form action="." method="GET"></form>
-
-												<input type="hidden" name="item" value="{{ item.item.id }}" />
-												
-												<input class="mtext-104 cl3 txt-center num-product item-qty" type="number" name="qty" value="{{ item.quantity }}">
-												<!-- <span></span><input type="submit" class="btn btn-link btn-update" style="display: none;" value="Update item" /> -->
-
-											</form>
+											<input class="mtext-104 cl3 txt-center num-product item-qty" type="number" name="qty" value="{{ item.quantity }}">
 											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
-										</div>
-										<!-- </form> -->
+										</div> -->
+											<input type="number" class="txt-center item-qty" name="qty" value="{{ item.quantity }}" style="background-color: gainsboro; height: 37px; width: 75px;" />
+
+											<input type="submit" class="btn btn-link btn-update" style="display: none;" value="Update item" />
+
+										<!-- </div> -->
+									</form>
 									</td>
 									<td id="item-line-total-{{ item.item.id }}" class="column-5 text-center">
 											{{ item.line_item_total }}
@@ -182,14 +187,14 @@
 
 						<div class="flex-w flex-t bor12 p-t-15 p-b-30">
 							<div class="size-208 w-full-ssm">
-								<span class="stext-110 cl2">
-									Shipping:
+								<span class="stext-110 cl2" style="color: black">
+										<b><p style="color: black; font-size: 17px">مالیات :</p></b>
 								</span>
 							</div>
 
 							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
 								<p class="stext-111 cl6 p-t-2">
-									There are no shipping methods available. Please double check your address, or contact us if you need any help.
+										<b><p style="color: black; font-size: 17px">{{ object.tax_total }}</p></b>
 								</p>
 								
 								<div class="p-t-15">

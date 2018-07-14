@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
     <script src="{%static 'js/jquery3.3.1.js' %}"></script>
+    
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="{%static 'js/bootstrap.min.js' %}"></script>
@@ -20,19 +21,13 @@
     <link rel="stylesheet" href="{% static 'tours/tour_style.css' %}">
     <link rel="stylesheet" href="{% static 'tours/main.css' %}">
 </head>
-<style>
-    {% block style %}
-
-    {% endblock style %}
-</style>
 
 <body>
-<
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md  bg-outline-light navbar-wrapper">
 <div class="container-fluid">
-		<a href="#" class="navbar-brand"><img id="top-icon" src="{% static "img/logo.png"%}" style="width: 30px; height: 30px;" alt="logo"></a>
+		<a href="#" class="navbar-brand"><img id="top-icon" src="{% static 'img/logo.png' %}" style="width: 30px; height: 30px;" alt="logo"></a>
 		<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbar-Responsive">
 			<span class="navbar-toggler-icon my-toggler "></span>
 		</button>
@@ -95,17 +90,11 @@ $(".variation_select").change(function(){
 
 });
 
-function showFlashMessage(message){
-    var template = "{% include 'alert.html' with message='" + message + "' %}";
-    // console.log(template);
-    $("body").append(template);
-    $(".container-alert-flash").fadeIn();
-    setTimeout(function () {
-        $(".container-alert-flash").fadeOut();
-    }, 1800);
-}
+
 
 //Ajax
+
+// Ajax for add items to the cart!!!
 $("#submit-btn").click(function (event) {
     event.preventDefault(); //prevent to do the default action witch is to submit
     var formData = $("#add-form").serialize();
@@ -116,10 +105,10 @@ $("#submit-btn").click(function (event) {
         data: formData,
         success: function (data) {
             // console.log(data);
-            $("#jquery-message").text("Added " + data.item_added + " Deleted " + data.deleted );
-            showFlashMessage("پیامی برای نمونه")
+            // $("#jquery-message").text("Added " + data.item_added + " Deleted " + data.deleted );
+            // showFlashMessage("پیامی برای نمونه");
+            showFlashMessage(data.flash_message);
         },
-
         error: function (response, error) {
             // console.log(response);
             // console.log(error);
@@ -228,7 +217,7 @@ $("#submit-btn").click(function (event) {
                                     <br>
                                     <input class="form-control" type="number" name="qty" value="1">
                             <br>
-                            <input id="submit-btn" type="submit" class="btn btn-dark" value="Add to Cart">
+                            <input id="submit-btn" type="submit" class="btn btn-dark" value="افزودن به سبد خرید">
                                     
                     </form>
                             <br>
@@ -322,22 +311,22 @@ $("#submit-btn").click(function (event) {
                         </div>
                         <div class="row img-gallery">
                             <div class="col-4">
-                                <img src="../img/desk.png" class="img-fluid" alt="">
+                                <img src="{% static 'img/desk.png' %}" class="img-fluid" alt="">
                             </div>
                             <div class="col-4">
-                                <img src="../img/desk.png" class="img-fluid" alt="">
+                                <img src="{% static 'img/desk.png' %}" class="img-fluid" alt="">
                             </div>
                             <div class="col-4">
-                                <img src="../img/desk.png" class="img-fluid" alt="">
+                                <img src="{% static 'img/desk.png' %}" class="img-fluid" alt="">
                             </div>
                             <div class="col-4">
-                                <img src="../img/desk.png" class="img-fluid" alt="">
+                                <img src="{% static 'img/desk.png' %}" class="img-fluid" alt="">
                             </div>
                             <div class="col-4">
-                                <img src="../img/desk.png" class="img-fluid" alt="">
+                                <img src="{% static 'img/desk.png' %}" class="img-fluid" alt="">
                             </div>
                             <div class="col-4">
-                                <img src="../img/desk.png" class="img-fluid" alt="">
+                                <img src="{% static 'img/desk.png' %}" class="img-fluid" alt="">
                             </div>
                         </div>
                     </div>
@@ -415,5 +404,6 @@ $("#submit-btn").click(function (event) {
         x.style.width = "180px";
     }
 </script>
+<script src="{%static 'js/main.js' %}"></script>
 </body>
 </html>

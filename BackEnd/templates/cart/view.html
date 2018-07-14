@@ -11,20 +11,34 @@
             item: item,
             qty: qty
         };
-        console.log(data);
+        // console.log(data);
         $.ajax({
             type: "GET",
             url: "{% url 'cart' %}",
             data: data,
             success: function (data) {
                 // console.log(data);
-                $("#jquery-message").text("Added " + data.item_added + " Deleted " + data.deleted);
+                // $("#jquery-message").text("Added " + data.item_added + " Deleted " + data.deleted);
                 if(data.deleted){
                     $("#item-" + item).fadeOut();
+                    $("#subtotal").text("مجموع : " + data.subtotal);
                 } else{
                     $("#item-line-total-" + item).text(data.line_total);
-                    $("#subtotal").text(data.subtotal);
+                    $("#subtotal").text("مجموع : " + data.subtotal);
                 }
+                if (data.total_items == 0){
+                    $(".table").fadeOut();
+
+                }
+                var message = "";
+                if (data.item_added){
+                    message = "محصول جدید اضافه شد";
+                } else if (data.deleted){
+                    message = "محصول از سبد خرید حذف شد";
+                } else {
+                    message = "محصول در سبد خرید به روزرسانی شد";
+                }
+                showFlashMessage(message);
             },
 
             error: function (response, error) {
@@ -46,6 +60,16 @@
     <strong>Warning!</strong> سلام به همگی!!!.
 </div>
 
+<div class="row">
+    
+</div>
+{% if object.cartitem_set.count < 1 %}
+
+    <div class="col-sm-6 col-sm-offset-3 text-center">
+        <h2>!!!سبد خرید شما خالی است</h2>
+    </div>
+
+{% else %}
 <table class="table">
 
 {% for item in object.cartitem_set.all %}
@@ -74,6 +98,8 @@
     </tr>
 
 </table>
+{% endif %}
 
 
 {% endblock content %}
+

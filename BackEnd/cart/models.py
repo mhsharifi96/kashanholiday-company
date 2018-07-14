@@ -48,6 +48,7 @@ post_delete.connect(cart_item_post_save_receiver, sender=CartItem)
 
 
 class Cart(models.Model):
+    
     user = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True, verbose_name=u"کاربر")
     items = models.ManyToManyField(TourVariation, through=CartItem, verbose_name=u"محتویات")
     timestamp = models.DateTimeField(auto_now_add=True, verbose_name=u"زمانن ایجاد")

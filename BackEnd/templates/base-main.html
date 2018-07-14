@@ -19,7 +19,6 @@
 	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
 
 	<script src="{% static 'js/main.js' %}"></script>
-	<link href="{% static 'css/main.css' %}" rel="stylesheet">
 
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="{% static 'cozastore/images/icons/favicon.png' %}"/>
@@ -50,6 +49,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'cozastore/css/main.css' %}">
+	<link href="{% static 'css/main.css' %}" rel="stylesheet">
 <!--===============================================================================================-->
 
 </head>
@@ -62,7 +62,11 @@
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
+<<<<<<< HEAD
 						<b><p style="font-size: 15px;">با ما همراه باشید :)</p></b>
+=======
+						<b><p style="font-size: 15px;">تخفیفات ویژه برای تورهای بالاتر از یک میلیون تومان</p></b>
+>>>>>>> 24ba0186c624c8b62d01e33ebc655f8ee06828d3
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
@@ -167,7 +171,7 @@
 						</div>
 
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti cart-count-badge" data-notify="{{ request.session.cart_item_count }}">
-							<a href="{% url 'cart' %}"><i class="zmdi zmdi-shopping-cart" style="color: black"></i></a>
+							<a href="{% url 'cart' %}"><i class="zmdi zmdi-shopping-cart" style="color: black;"></i></a>
 						</div>
 
 						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
@@ -176,7 +180,7 @@
 					</div>
 
 					<a href="{% url 'home' %}" class="logo">
-						<img src="../static/img/logo.png" class="logo">
+						<img src="{% static 'img/logo.png' %}" class="logo">
 					</a>
 				</nav>
 			</div>
@@ -218,7 +222,7 @@
 			<ul class="topbar-mobile">
 				<li>
 					<div class="left-top-bar">
-						Free shipping for standard order over $100
+							تخفیفات ویژه برای تورهای بالاتر از یک میلیون تومان
 					</div>
 				</li>
 
@@ -237,7 +241,7 @@
 						</a>
 
 						<a href="http://www.tgju.org/currency-exchange" class="flex-c-m p-lr-10 trans-04">
-							USD
+							IR RIALS
 						</a>
 					</div>
 				</li>
@@ -245,7 +249,7 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="index.html">Home</a>
+					<a href="{% url 'home' %}">صفحه اصلی</a>
 					<!-- <ul class="sub-menu-m">
 						<li><a href="index.html">Homepage 1</a></li>
 						<li><a href="home-02.html">Homepage 2</a></li>
@@ -261,19 +265,19 @@
 				</li>
 
 				<li>
-					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">تورها</a>
 				</li>
 
 				<li>
-					<a href="blog.html">Blog</a>
+					<a href="blog.html">وبلاگ</a>
 				</li>
 
 				<li>
-					<a href="about.html">About</a>
+					<a href="{% url 'about' %}">درباره ما</a>
 				</li>
 
 				<li>
-					<a href="contact.html">Contact</a>
+					<a href="{% url 'contact' %}">تماس با ما</a>
 				</li>
 			</ul>
 		</div>

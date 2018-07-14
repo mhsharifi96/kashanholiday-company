@@ -24,7 +24,8 @@ $('#back-to-top').onclick(function(link){
 
 
 function showFlashMessage(message){
-    var template = "{% include 'alert.html' with message='" + message + "' %}";
+    // var template = "{% include 'alert.html' with message='" + message + "' %}";
+    var template = "<div class='container container-alert-flash'><div class='col-sm-3 col-sm-offset-8'><div class='alert alert-warning alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" + message + "</div></div></div>";
     console.log(template);
     $("body").append(template);
     $(".container-alert-flash").fadeIn();
@@ -32,3 +33,5 @@ function showFlashMessage(message){
         $(".container-alert-flash").fadeOut();
     }, 1800);
 }
+
+

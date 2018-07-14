@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls', namespace='account')),
     url(r'^tours/', include('tours.urls', namespace='tours')),
     url(r'^tours/categories', include('tours.urls_categories', namespace='categories')),
+    url(r'^cart-old/$', CartView.as_view(), name='cart-old'),
     url(r'^cart/$', CartView.as_view(), name='cart'),
     url(r'^blog/posts/', include("blog.urls", namespace="blog")),
     url(r'^cart/count/$', CartBadgeCountView.as_view(), name='cart_badge'),

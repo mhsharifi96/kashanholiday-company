@@ -52,7 +52,11 @@ class RestaurantLocation(models.Model):
 
     def get_absolute_url(self):
         # return f"/restaurants/{self.slug}"
-        return reverse('restaurants:detail', kwargs={'slug': self.slug})
+        return reverse('restaurants:rest_detail', kwargs={'slug': self.slug})
+
+    
+
+
 
     @property
     def title(self):

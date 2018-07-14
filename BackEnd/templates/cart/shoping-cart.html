@@ -1,13 +1,71 @@
 
 {% extends "base-main.html" %}
-<!DOCTYPE html>
-<html lang="en">
+{% load staticfiles %}
 
+<script>
+	{% block jquery %}
+		// $(".item-qty").change(function () {
+		// 	// $(this).next(".btn-update").fadeIn();
+		// 	// event.preventDefault(); //prevent to do the default action witch is to submit
+		// 	var item = $(this).prev("input[type='hidden']").val();
+		// 	var qty = $(this).val();
+		// 	var data = {
+		// 		item: item,
+		// 		qty: qty
+		// 	};
+		// 	// console.log(data);
+		// 	$.ajax({
+		// 		type: "GET",
+		// 		url: "{% url 'cart' %}",
+		// 		data: data,
+		// 		success: function (data) {
+		// 			// console.log(data);
+		// 			$("#jquery-message").text("Added " + data.item_added + " Deleted " + data.deleted);
+		// 			if(data.deleted){
+		// 				$("#item-" + item).fadeOut();
+		// 				$("#subtotal").text(data.subtotal);
+		// 				$("#taxtotal").text(data.tax_total);
+		// 				$("#carttotal").text(data.cart_total);
+		// 			} else{
+		// 				$("#item-line-total-" + item).text(data.line_total);
+		// 				$("#subtotal").text(data.subtotal);
+		// 				$("#taxtotal").text(data.tax_total);
+		// 				$("#carttotal").text(data.cart_total);
+		// 			}
+		// 			if (data.total_items == 0){
+		// 				$(".table").fadeOut();
+		// 				// $(".main-content").text("!!!سبد خرید شما خالی است")
+		// 				var template = "{% include 'cart/empty_shopping_cart.html' %}"
+		// 				$(".main-content").html(template)
+		// 			}
+		// 			var message = "";
+		// 			if (data.item_added){
+		// 				message = "!محصول جدید اضافه شد";
+		// 			} else if (data.deleted){
+		// 				message = "!محصول از سبد خرید حذف شد";
+		// 			} else {
+		// 				message = "!محصول در سبد خرید به روزرسانی شد";
+		// 			}
+		// 			showFlashMessage(message);
+		// 			updateCartItemBadge();
+		// 		},
+	
+		// 		error: function (response, error) {
+		// 			// console.log(response);
+		// 			// console.log(error);
+		// 			$("#add-form").submit()
+		// 		},
+		// 	})
+	
+		// });
+	{% endblock jquery %}
+</script>
 
+{% block content %}
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+			<a href="{% url 'home' %}" class="stext-109 cl8 hov-cl1 trans-04" style="color: aqua">
 				Home
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
@@ -38,10 +96,10 @@
 								<tr class="table_row">
 									<td class="column-1">
 										<div class="how-itemcart1">
-											<img src="images/item-cart-04.jpg" alt="IMG">
+											<img src="{% static 'cozastore/images/item-cart-04.jpg' %}" alt="IMG">
 										</div>
 									</td>
-									<td class="column-2">Fresh Strawberries</td>
+									<td class="column-2">تور دور اروپا</td>
 									<td class="column-3">$ 36.00</td>
 									<td class="column-4">
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
@@ -62,10 +120,10 @@
 								<tr class="table_row">
 									<td class="column-1">
 										<div class="how-itemcart1">
-											<img src="images/item-cart-05.jpg" alt="IMG">
+											<img src="{% static 'cozastore/images/item-cart-05.jpg' %}" alt="IMG">
 										</div>
 									</td>
-									<td class="column-2">Lightweight Jacket</td>
+									<td class="column-2">تور درو آسیا</td>
 									<td class="column-3">$ 16.00</td>
 									<td class="column-4">
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
@@ -90,12 +148,12 @@
 								<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code">
 									
 								<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-									Apply coupon
+									اعمال تغییرات
 								</div>
 							</div>
 
 							<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-								Update Cart
+								به روز رسانی سبد خرید
 							</div>
 						</div>
 					</div>
@@ -192,7 +250,7 @@
 		
 
 	<!-- Footer -->
-	<footer class="bg3 p-t-75 p-b-32">
+	<!-- <footer class="bg3 p-t-75 p-b-32">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-lg-3 p-b-50">
@@ -306,35 +364,35 @@
 			<div class="p-t-40">
 				<div class="flex-c-m flex-w p-b-18">
 					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
+						<img src="{% static 'cozastore/images/icons/icon-pay-01.png' %}" alt="ICON-PAY">
 					</a>
 
 					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
+						<img src="{% static 'cozastore/images/icons/icon-pay-02.png' %}" alt="ICON-PAY">
 					</a>
 
 					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
+						<img src="{% static 'cozastore/images/icons/icon-pay-03.png' %}" alt="ICON-PAY">
 					</a>
 
 					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
+						<img src="{% static 'cozastore/images/icons/icon-pay-04.png' %}" alt="ICON-PAY">
 					</a>
 
 					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
+						<img src="{% static 'cozastore/images/icons/icon-pay-05.png' %}" alt="ICON-PAY">
 					</a>
-				</div>
+				</div> -->
 
-				<p class="stext-107 cl6 txt-center">
+				<!-- <p class="stext-107 cl6 txt-center"> -->
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
-				</p>
+				<!-- </p>
 			</div>
 		</div>
-	</footer>
+	</footer> -->
 
 
 	<!-- Back to top -->
@@ -343,6 +401,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<i class="zmdi zmdi-chevron-up"></i>
 		</span>
 	</div>
+
+{% endblock content %}
 
 {% block javascript %}
 

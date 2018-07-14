@@ -62,7 +62,7 @@
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
-						<b><p style="font-size: 15px;">ارسال رایگان برای سفارشات بالای 100 هزار تومان</p></b>
+						<b><p style="font-size: 15px;">با ما همراه باشید :)</p></b>
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
@@ -123,8 +123,14 @@
 							</li>
 
 							<li>
-								<a href="product.html">
+								<a href="{% url 'restaurants:rest_list' %}">
 										<b><p style="font-size: 17px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">رستوران‌ها</p></b>
+								</a>
+							</li>
+
+							<li>
+								<a href="{% url 'hotel:hotel_list' %}">
+										<b><p style="font-size: 17px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">هتل‌ها</p></b>
 								</a>
 							</li>
 

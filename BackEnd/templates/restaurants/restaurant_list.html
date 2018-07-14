@@ -1,18 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>:)))</title>
-</head>
-<body>
-    {% for rest in  object_list%}
-    {{rest.name|linebreaks}}
-    {{rest.location|linebreaks}}
-    slug:{{rest.slug}}
-    {% empty %}
-    <li>No restaurants yet.</li>
-    {%endfor%}
-</body>
-</html>
+{% extends 'tours/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+    {% for object in object_list %}
+
+    <div class="col-md-6 col-sm-6 col-12 portfolio-item">
+            <a class="portfolio-link" href="{{ object.get_absolute_url }}">
+                    <img class="img-fluid" src="{% if object.image%}{{object.image.url}}{%else%}{% static "img/Camel-riding-Maranjab-Desert.jpg" %}{%endif%}" alt="{{object.name}}">
+            </a>
+            <div class="portfolio-caption">
+                <h4>{{object.name}}</h4>
+                 <a href="{{ object.get_absolute_url }}">{{ object.name }}</a>
+                <p>{{object.description|truncatewords:8|linebreaks}}</p>
+                
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+
+
+
+{% endblock %}

@@ -10,6 +10,21 @@ from .models import CartItem, Cart
 # Create your views here.
 
 
+class CartBadgeCountView(View):
+	def get(self, request, *args, **kwargs):
+		if request.is_ajax():
+			cart_id = self.request.session.get("cart_id")
+			if cart_id == None:
+				count = 0
+			else:
+				cart = Cart.objects.get(id=cart_id)
+				count = cart.items.count()
+			request.session["cart_item_count"] = count
+			return JsonResponse({"count": count})
+		else:
+			raise Http404
+
+
 class CartView(SingleObjectMixin, View):
     model = Cart
     template_name = "cart/view.html"

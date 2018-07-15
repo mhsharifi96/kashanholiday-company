@@ -5,8 +5,8 @@
 {% block content %}
 
 
-
-<div class='row isotope-grid text-right'>
+<div class="container m-5">
+<div class='row isotope-grid text-right' style="direction: rtl">
 <div class='col-sm-6 col-sm-offset-3'>
 
 
@@ -17,9 +17,10 @@
 <form method='POST' action=''>{% csrf_token %}
 {{ form|crispy }}
 
-<input class='btn btn-default' type='submit' value='تایید' style="align-content: right; align-items: right; text-align: right;" />
+<input class='btn btn-primary' type='submit' value='تایید' style="align-content: right; align-items: right; text-align: right;" />
 
 </form>
+</div>
 </div>
 </div>
 {% endblock %}

@@ -7,22 +7,22 @@
 
 
 <script>
-{% block jquery %}
-var clientToken = "{{ client_token }}";
+// {% block jquery %}
+// var clientToken = "{{ client_token }}";
 
-braintree.setup(clientToken, "dropin", {
-  container: "payment-form"
-});
+// braintree.setup(clientToken, "dropin", {
+//   container: "payment-form"
+// });
 
 
 
-{% endblock %}
+// {% endblock %}
 </script>
 
 {% block content %}
 
 
-
+<div class="row isotope-grid">
 
 {% if not user_can_continue %}
 <div class='col-sm-6'>
@@ -57,7 +57,7 @@ braintree.setup(clientToken, "dropin", {
 
 <div class='col-sm-4 col-sm-offset-4 text-center'>
 
-{% include "orders/order_summary_short.html" with order=order %}
+{% include "order/order_summary_short.html" with order=order %}
 
 
 <p>
@@ -81,6 +81,6 @@ braintree.setup(clientToken, "dropin", {
 
 
 {% endif %}
-
+</div>
 
 {% endblock %}

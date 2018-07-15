@@ -48,6 +48,7 @@ class UserAddressForm(forms.ModelForm):
 			'zipcode',
 			'type'
 		]
+		
 
 
 

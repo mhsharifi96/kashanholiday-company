@@ -1,18 +1,15 @@
-{% extends "base.html" %}
+{% extends "base-sec.html" %}
 
 
 
 {% block content %}
 
 
-
-
-
 {% if object_list|length <= 0 %}
 
 <div class='col-sm-6 col-sm-offset-3 text-center'>
 <p class='lead'>
-You do not currently have orders.
+شما سفارشی ندارید.
 </p>
 
 </div>
@@ -20,7 +17,7 @@ You do not currently have orders.
 {% else  %}
 
 <div class='col-sm-6 col-sm-offset-3'>
-<h1>Your Orders</h1>
+<h1>سفارشات شما</h1>
 
 
 <table class='table'>

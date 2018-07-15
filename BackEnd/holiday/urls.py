@@ -27,7 +27,7 @@ from order.views import (
                     OrderDetail)
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^$', Index_Page, name='home'),
     # url(r'^about/$', TemplateView.as_view(template_name='about.html'), name='about'),
     url(r'^restaurants/', include('restaurants.urls', namespace='restaurants')),

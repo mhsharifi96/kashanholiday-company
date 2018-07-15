@@ -13,7 +13,6 @@ from .models import UserAddress, UserCheckout, Order
 
 class OrderDetail(DetailView):
 	model = Order
-	template_name = "orders/order_detail.html"
 
 	def dispatch(self, request, *args, **kwargs):
 		try:

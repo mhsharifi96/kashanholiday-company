@@ -22,7 +22,7 @@
 {% block content %}
 
 
-<div class="row isotope-grid">
+<div class="row isotope-grid " style="direction: rtl">
 
 {% if not user_can_continue %}
 <div class='col-sm-6'>
@@ -55,26 +55,27 @@
 
 {% else %}
 
-<div class='col-sm-4 col-sm-offset-4 text-center'>
+<div class='col-sm-4 col-sm-offset-4 m-5 text-right'>
 
 {% include "order/order_summary_short.html" with order=order %}
 
 
 <p>
- <a href='{% url "order_address" %}'>Change an Address</a>
+ <a class="btn btn-primary m-5" href='{% url "order_address" %}'>
+     تغییر دادن آدرس
+ </a>
 </p>
 <br/>
 
 <form id="checkout"  method='POST' action="{% url 'checkout_final' %}">{% csrf_token %}
 <!-- <input type='hidden' name='payment_token' value='ABC' /> -->
 <div id="payment-form"></div>
-<p><b><button type='submit'>Complete Order</button></b>
+<p><b><button class="btn btn-secondary m-5"  type='submit'>
+    ثبت سفارش
+</button></b>
 
 </p>
 </form>
-
-
-
 
 </div>
 

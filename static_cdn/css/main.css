@@ -199,7 +199,9 @@ body {
   margin-bottom: 1rem;
 }
 .lead{
-  font-size: 80%;
+  font-size: 95%;
+  direction: rtl;
+  margin: 1em 0;
 }
 .fa-bus {
   color: #e54d26;
